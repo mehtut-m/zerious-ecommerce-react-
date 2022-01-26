@@ -2,15 +2,11 @@ import React from "react";
 
 function LoginForm() {
   return (
-    // <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-    //   <div class="shrink-0">
-    //     <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
-    //   </div>
-    //   <div>
-    //     <div class="text-xl font-medium text-black">ChitChat</div>
-    //     <p class="text-gray-500">You have a new message!</p>
-    //   </div>
-    <form action="" className="p-5">
+    <form action="" className="flex flex-col w-full gap-4 p-5">
+      <input
+        type="text"
+        className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+      />
       <input
         type="text"
         className="
@@ -27,7 +23,7 @@ function LoginForm() {
         bg-login-input-bg-color
                   "
         placeholder="Username"
-      ></input>
+      />
 
       <input
         className="
@@ -46,18 +42,21 @@ function LoginForm() {
         type="password"
         placeholder="Password"
       />
-      <button className="bg-primary text-base text-white py-3 rounded-lg w-full ">
+      <button className="bg-primary text-base text-white px-3 py-3 rounded-lg w-full ">
         LogIn
       </button>
 
-      <button className="bg-white rounded-lg w-full text-base py-3">
+      <div class="mx-auto -mb-6 pb-1">
+        <span class="text-center text-xs text-white">or sign up with</span>
+      </div>
+
+      <button className="bg-white text-base px-3 py-3 rounded-lg w-full">
         Sign in with Google
       </button>
-      <button className="text-white rounded-lg w-full text-base bg-facebook-color py-3">
+      <button className="text-white text-base px-3 py-3 rounded-lg w-full bg-facebook-color">
         Sign in with Facebook
       </button>
     </form>
-    // </div>
   );
 }
 

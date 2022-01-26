@@ -1,4 +1,15 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Quicksand:wght@500;600;700&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  background: linear-gradient(93.32deg, #212121 22.81%, #373232 88.28%);
+}
+.login {
+  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.75) 82.81%);
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +46,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
