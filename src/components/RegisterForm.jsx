@@ -1,9 +1,17 @@
-import { useState } from 'react';
-import { toast, toastify } from 'react-toastify';
+import { useState, useRef, useContext } from 'react';
+import { toast } from 'react-toastify';
 import Button from './Button';
 import FormInput from './inputs/FormInput';
+import {
+  isEmail,
+  checkPasswordLength,
+  isPasswordMatch,
+  isValidName,
+} from '../services/inputValidator';
+import { AuthContext } from '../contexts/AuthContext';
 
 const RegisterForm = () => {
+  const { register } = useContext(AuthContext);
   const [registerData, setRegisterData] = useState({
     firstName: '',
     lastName: '',
@@ -12,47 +20,52 @@ const RegisterForm = () => {
     confirmPassword: '',
   });
 
+  const toastId = useRef(null);
+
+  const registerErrToast = (errMessage) => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.error(errMessage, { autoClose: 2500 });
+    }
+  };
+
   const handleInputChange = (e) => {
     e.preventDefault();
     setRegisterData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleSubmitLogin = (e) => {
+
+  const handleSubmitRegister = async (e) => {
     e.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } =
       registerData;
 
-    if (typeof firstName !== 'string' || firstName.trim().length <= 0) {
-      return toast.error('Please enter your first name');
+    if (!isEmail(email)) {
+      return registerErrToast('Please enter a valid email');
     }
-
-    if (typeof lastName !== 'string' || lastName.trim().length <= 0) {
-      return toast.error('Please enter your last name');
-    }
-
-    if (password.trim().length < 6) {
+    if (!checkPasswordLength(password)) {
       // Verify password
-      return toast.error('Password must be at least 6 characters');
+      return registerErrToast('Password must be at least 6 characters');
     }
-    if (password !== confirmPassword) {
-      return toast.error('Password does not match');
+    if (!isPasswordMatch(password, confirmPassword)) {
+      return registerErrToast('Password does not match');
     }
+
+    if (!isValidName(firstName)) {
+      return registerErrToast('Please enter your first name');
+    }
+
+    if (!isValidName(lastName)) {
+      return registerErrToast('Please enter your last name');
+    }
+
+    const user = {};
+    for (let key in registerData) {
+      user[key] = registerData[key].trim();
+    }
+    const res = await register({ ...user });
   };
+
   return (
-    <form className="flex flex-col gap-3" onSubmit={handleSubmitLogin}>
-      <FormInput
-        title="firstName"
-        type="text"
-        label="First Name"
-        value={registerData.firstName}
-        handleChange={handleInputChange}
-      />
-      <FormInput
-        title="lastName"
-        type="text"
-        label="Last Name"
-        value={registerData.lastName}
-        handleChange={handleInputChange}
-      />
+    <form className="flex flex-col gap-3" onSubmit={handleSubmitRegister}>
       <FormInput
         title="email"
         type="email"
@@ -73,6 +86,20 @@ const RegisterForm = () => {
         type="password"
         label="Confirm Password"
         value={registerData.confirmPassword}
+        handleChange={handleInputChange}
+      />
+      <FormInput
+        title="firstName"
+        type="text"
+        label="First Name"
+        value={registerData.firstName}
+        handleChange={handleInputChange}
+      />
+      <FormInput
+        title="lastName"
+        type="text"
+        label="Last Name"
+        value={registerData.lastName}
         handleChange={handleInputChange}
       />
 
