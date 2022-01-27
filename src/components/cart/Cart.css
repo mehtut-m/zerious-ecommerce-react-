@@ -1,0 +1,7 @@
+.cart-counter {
+  top: -50%;
+  right: -50%;
+  width: 20px;
+  height: 20px;
+  /* transform: translate(50%,-50%); */
+}

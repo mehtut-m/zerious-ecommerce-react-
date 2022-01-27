@@ -1,20 +1,14 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Header from './components/Header';
+import Header from './layouts/Header';
 import { ToastContainer, toast } from 'react-toastify';
+import RouteConfig from './routes/routeConfig';
 import './App.css';
 
 function App() {
   return (
     <div className="App relative">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <RouteConfig />
+
       <ToastContainer theme="dark" />
     </div>
   );

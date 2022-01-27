@@ -1,7 +1,14 @@
-import React from "react";
+import { useEffect, useState } from 'react';
+import ProductList from '../components/products/ProductList';
 
 function Home() {
-  return <div className="bg-green-500">Home</div>;
+  const [products, setProducts] = useState([]);
+  useEffect(() => {}, []);
+  return (
+    <div className="bg-green-500">
+      <ProductList />
+    </div>
+  );
 }
 
 export default Home;

@@ -1,19 +1,30 @@
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 const REGISTER_FAIL = 'REGISTER_FAIL';
-const USER_LOADED = 'USER_LOADED';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAIL = 'LOGIN_FAIL';
 const LOGOUT = 'LOGOUT';
 const LOADING = 'LOADING';
+const AUTH_SUCCESS = 'AUTH_SUCCESS';
+const AUTH_FAIL = 'AUTH_FAIL';
 
 const authReducer = (state, action) => {
   switch (action.type) {
-    case USER_LOADED: {
-      const newState = { ...state, user: action.payload.user };
-      return newState;
+    case REGISTER_SUCCESS:
+    case LOGIN_SUCCESS:
+    case AUTH_SUCCESS: {
+      return { ...state, user: action.payload.user, isAuth: true };
     }
-    case LOGIN_SUCCESS: {
+    case LOADING: {
       return state;
+    }
+
+    case AUTH_FAIL: {
+      return;
+    }
+    case REGISTER_FAIL:
+    case LOGIN_FAIL:
+    case LOGOUT: {
+      return { ...state, user: null, token: null, isAuth: false };
     }
     default: {
       return state;

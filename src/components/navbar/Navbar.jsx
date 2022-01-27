@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from '../SearchBar';
+import CartShortCut from '../cart/CartShortCut';
 
 const Navbar = () => {
   return (
@@ -9,6 +11,8 @@ const Navbar = () => {
           <span className="font-['Quicksand'] text-primary"> Z</span>rious
         </Link>
       </div>
+      <SearchBar />
+      <CartShortCut />
     </nav>
   );
 };

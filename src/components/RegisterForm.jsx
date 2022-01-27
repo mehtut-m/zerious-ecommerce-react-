@@ -8,6 +8,7 @@ import {
   isPasswordMatch,
   isValidName,
 } from '../services/inputValidator';
+
 import { AuthContext } from '../contexts/AuthContext';
 
 const RegisterForm = () => {
