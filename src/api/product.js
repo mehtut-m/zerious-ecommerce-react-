@@ -1,8 +1,10 @@
 import axios from '../config/axios';
 
 const getAllProduct = async () => {
-  const products = axios.get('/product');
-  return products;
+  try {
+    const products = axios.get('/product');
+    return products;
+  } catch (error) {}
 };
 
 export { getAllProduct };

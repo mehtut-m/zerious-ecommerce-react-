@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import HobbyWrapper from '../components/navbar/HobbyWrapper';
 import ProductList from '../components/products/ProductList';
 
 function Home() {
   const [products, setProducts] = useState([]);
-  useEffect(() => {}, []);
+
   return (
-    <div className="bg-green-500">
+    <div className="">
+      <HobbyWrapper />
       <ProductList />
     </div>
   );

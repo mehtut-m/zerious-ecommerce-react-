@@ -13,6 +13,7 @@ const Navbar = () => {
       </div>
       <SearchBar />
       <CartShortCut />
+      {/* <i class="bi bi-person-fill text-white"></i> */}
     </nav>
   );
 };
