@@ -10,23 +10,31 @@ const CartContextProvider = ({ children }) => {
     user: { user },
   } = useContext(AuthContext);
 
-  const [cart, dispatch] = useReducer(cartReducer, []);
+  const [cart, dispatch] = useReducer(cartReducer, {
+    order: {},
+    cartItems: [],
+  });
 
   useEffect(() => {
     if (user) {
       getMyCart(user.id)
         .then((res) => {
           dispatch({
-            type: 'LOGOUT',
-            payload: {},
+            type: 'LOAD_CART_ITEM',
+            payload: res.data.order,
           });
         })
         .catch((err) => console.log(err));
     }
   }, [user]);
 
+  const addItemToCart = async (productItem) => {
+    try {
+    } catch (error) {}
+  };
+
   return (
-    <CartContext.Provider value={{ cartItem: { ...cart } }}>
+    <CartContext.Provider value={{ cart, addItemToCart }}>
       {children}
     </CartContext.Provider>
   );

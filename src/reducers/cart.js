@@ -1,13 +1,12 @@
 const ADD_CART_ITEM = 'ADD_CART_ITEM';
 const DELETE_CART_ITEM = 'DELETE_CART_ITEM';
-const LOADED_CART_ITEM = 'LOADED_CART_ITEM';
+const LOAD_CART_ITEM = 'LOAD_CART_ITEM';
 
-const cartReducer = (state = { cartItems: [] }, action) => {
+const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
   switch (action.type) {
-    case LOADED_CART_ITEM: {
-      const currentCart = action.payload;
-
-      return;
+    case LOAD_CART_ITEM: {
+      const { orderItem: cartItems, ...order } = action.payload;
+      return { order: order, cartItems: cartItems };
     }
     case ADD_CART_ITEM: {
       return;
