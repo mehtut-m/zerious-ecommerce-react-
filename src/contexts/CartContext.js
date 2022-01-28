@@ -1,5 +1,6 @@
 import { createContext, useEffect, useReducer, useContext } from 'react';
 import cartReducer from '../reducers/cart';
+import { updateCart } from '../api/cart';
 import { getMyCart } from '../api/cart';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -28,13 +29,22 @@ const CartContextProvider = ({ children }) => {
     }
   }, [user]);
 
-  const addItemToCart = async (productItem) => {
+  const updateCartItem = async (productId, amount) => {
     try {
-    } catch (error) {}
+      const res = await updateCart(productId, amount);
+      if (res.status === 200) {
+        dispatch({
+          type: 'UPDATE_CART_ITEM',
+          payload: res.data.orderItem,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <CartContext.Provider value={{ cart, addItemToCart }}>
+    <CartContext.Provider value={{ cart, updateCartItem }}>
       {children}
     </CartContext.Provider>
   );

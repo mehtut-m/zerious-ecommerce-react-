@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Product from '../pages/Product';
 import Register from '../pages/Register';
+import Test from '../pages/Test';
 
 function RouteConfig() {
   const {
@@ -17,6 +18,7 @@ function RouteConfig() {
     <Routes>
       <Route path="" element={<Home />} />
       <Route path="/product/:id" element={<Product />} />
+      <Route path="/test" element={<Test />} />
 
       {isAuth ? (
         <>

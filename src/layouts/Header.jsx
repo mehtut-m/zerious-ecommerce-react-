@@ -4,15 +4,12 @@ import Navbar from '../components/navbar/Navbar';
 import { useLocation } from 'react-router-dom';
 
 const Header = (props) => {
-  //   const usePathname = () => {
-
   return (
-    // location.pathname !== '/login' &&
     <div
       className={`${'header'} 
-      bg-transparent sticky w-full flex justify-center`}
+      bg-transparent sticky top-0 w-full flex justify-center -z-0`}
     >
-      <Navbar />
+      <Navbar className={'sticky'} />
     </div>
   );
 };

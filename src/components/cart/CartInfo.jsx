@@ -1,34 +1,38 @@
-import React from 'react';
+import { useState } from 'react';
+import './Cart.css';
+import CartItemList from './CartItemList';
+import Button from '../Button';
+import CartFooter from './CartFooter';
+const CartInfo = ({ closeCanvas, cartOn, cart }) => {
+  const { order, cartItems } = cart;
 
-const CartInfo = () => {
   return (
     <>
-      <button
-        class="btn btn-primary"
-        type="button"
-        data-mdb-toggle="offcanvas"
-        data-mdb-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
-      >
-        Toggle right offcanvas
-      </button>
-
+      {/* Blur Screen */}
+      {/* <div className="bg-black opacity-70 h-screen w-screen z-50 absolute top-0 right-0"></div> */}
       <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="offcanvasRight"
-        aria-labelledby="offcanvasRightLabel"
+        className={`cart-container bg-white z-50 h-screen absolute top-0 w-[90vw] p-9 pt-0 max-w-[22rem] md:max-w-md right-0 transition-all duration-500 ease-in-out  ${
+          !cartOn ? 'cart-off ' : ''
+        } `}
       >
-        <div class="offcanvas-header">
-          <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-mdb-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+        <div className="cart-header pb-5 border-b flex justify-between">
+          <h3 className="text-2xl mt-8">My Cart</h3>
+          <button onClick={closeCanvas}>
+            <i className="bi bi-x-lg"></i>
+          </button>
         </div>
-        <div class="offcanvas-body">...</div>
+        {cartItems.length < 1 ? (
+          <p className="pt-5 text-base">Your cart is Empty.</p>
+        ) : (
+          <>
+            <CartItemList cartItems={cartItems} />
+
+            <div className="cart-footer pt-5 border-t">
+              <CartFooter cartItems={cartItems} />
+              <Button text="Check Out"></Button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

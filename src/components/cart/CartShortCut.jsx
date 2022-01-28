@@ -1,20 +1,21 @@
 import cartIcon from '../../assets/icons/cart.svg';
 import './Cart.css';
-const CartShortCut = ({ cart }) => {
-  const { order, cartItems } = cart;
-  console.log(cartItems);
+
+const CartShortCut = ({ cart, handleClick }) => {
+  const { cartItems } = cart;
+
   const cartItemCount = cartItems.length;
   return (
-    <div>
-      <button className="relative">
+    <>
+      <button className="relative" onClick={handleClick}>
         <img src={cartIcon} alt=""></img>
-        {
+        {cartItemCount > 0 && (
           <p className="absolute bg-primary p-1 rounded-full text-xs cart-counter">
-            {cartItemCount}
+            <span>{cartItemCount}</span>
           </p>
-        }
+        )}
       </button>
-    </div>
+    </>
   );
 };
 

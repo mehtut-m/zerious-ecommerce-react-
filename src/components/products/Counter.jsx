@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 const Counter = ({ itemCount, handleClick }) => {
-  const { addCount, removeCount } = handleClick;
+  const { addCount, removeCount, updateCount } = handleClick;
+
   const handleClickAdd = () => {
     addCount();
   };
@@ -10,11 +11,18 @@ const Counter = ({ itemCount, handleClick }) => {
   };
 
   return (
-    <div className="counter-container">
+    <div className="counter-container flex">
       <button className="border-2 w-6 h-12" onClick={handleClickSubtract}>
         -
       </button>
-      <span className="product-count p-3">{itemCount}</span>
+      <input
+        type="number"
+        className="product-count w-12 p-2 text-center h-12 rounded-none"
+        value={itemCount}
+        min="1"
+        onChange={(e) => updateCount(e.target.value)}
+      />
+
       <button className="border-2 w-6 h-12" onClick={handleClickAdd}>
         +
       </button>

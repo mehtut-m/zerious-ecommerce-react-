@@ -9,6 +9,7 @@ import Counter from '../components/products/Counter';
 import AddToCartBtn from '../components/cart/AddToCartBtn';
 import Button from '../components/Button';
 import ProductCarousel from '../components/products/Carousel';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const { id } = useParams();
@@ -16,7 +17,16 @@ const Product = () => {
   const [itemCount, setItemCount] = useState(1);
 
   const addCount = () => {
-    setItemCount((prev) => (prev < product.quantity ? prev + 1 : prev));
+    setItemCount((prev) => {
+      if (prev < product.quantity) {
+        return prev + 1;
+      }
+      toast.error('Sorry, This is all we have instock');
+      return prev;
+    });
+  };
+  const updateCount = (value) => {
+    setItemCount(value > product.quantity ? product.quantity : value);
   };
   const removeCount = () => {
     setItemCount((prev) => (prev > 1 ? prev - 1 : prev));
@@ -32,7 +42,6 @@ const Product = () => {
     <div className="container m-auto">
       <div className="product-info flex flex-wrap justify-between w-full container">
         <div className="product-img-container w-full md:max-w-md">
-          {/* <ProductCarousel /> */}
           <img
             className="product-img mb-10 w-full"
             src={product.productImg || defaultImg}
@@ -53,7 +62,7 @@ const Product = () => {
 
           <Counter
             itemCount={itemCount}
-            handleClick={{ addCount, removeCount }}
+            handleClick={{ addCount, removeCount, updateCount }}
           />
           <Button text={'Add to Cart'} className={'bg-primary text-base'} />
         </div>
