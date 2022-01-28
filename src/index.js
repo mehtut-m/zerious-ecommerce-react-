@@ -8,6 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext';
 import CartContextProvider from './contexts/CartContext';
 
+import 'tw-elements';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

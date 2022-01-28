@@ -7,7 +7,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 import LoginButton from '../components/Button';
-import { toast } from 'react-toastify';
 
 function Login() {
   const { signinWithGoogle, signinWithFacebook, signinOrganic } =

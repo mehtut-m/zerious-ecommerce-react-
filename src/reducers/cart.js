@@ -5,6 +5,8 @@ const LOADED_CART_ITEM = 'LOADED_CART_ITEM';
 const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case LOADED_CART_ITEM: {
+      const currentCart = action.payload;
+
       return;
     }
     case ADD_CART_ITEM: {

@@ -2,7 +2,9 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
-
+.App {
+  background-color: #fff;
+}
 .header {
   background: linear-gradient(93.32deg, #212121 22.81%, #373232 88.28%);
 }
@@ -10,5 +12,6 @@
   background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.75) 82.81%);
 }
 .container {
-  max-width: 300px;
+  max-width: 1080px;
+  padding: 1.25rem;
 }

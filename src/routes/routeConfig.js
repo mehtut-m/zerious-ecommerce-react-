@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Product from '../pages/Product';
 import Register from '../pages/Register';
 
 function RouteConfig() {
@@ -15,16 +16,17 @@ function RouteConfig() {
   return (
     <Routes>
       <Route path="" element={<Home />} />
+      <Route path="/product/:id" element={<Product />} />
+
       {isAuth ? (
         <>
           <Route path="" element={<Home />} />
-
           <Route path="*" element={<Navigate to="/" />} />
         </>
       ) : (
         <>
           <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
         </>
         // </Route>
       )}
