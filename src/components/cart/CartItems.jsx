@@ -1,10 +1,9 @@
 import { useContext } from 'react';
-
-import defaultImg from '../../assets/images/default_product_img.png';
 import { Link } from 'react-router-dom';
 import Counter from '../products/Counter';
-
 import { CartContext } from '../../contexts/CartContext';
+import { formatThaiCurrency } from '../../services/currencyService';
+import defaultImg from '../../assets/images/default_product_img.png';
 
 const CartItems = ({ cartItem }) => {
   const { updateCartItem } = useContext(CartContext);
@@ -32,7 +31,7 @@ const CartItems = ({ cartItem }) => {
   };
 
   return (
-    <div className="flex mb-4 gap-4">
+    <div className="flex mb-4 gap-4 ">
       <img
         src={productImg || defaultImg}
         alt={productName}
@@ -42,7 +41,7 @@ const CartItems = ({ cartItem }) => {
         <Link className="text-base" to={`/product/${productId}`}>
           {productName}
         </Link>
-        <p>{productPrice}</p>
+        <p className="text-base">{formatThaiCurrency(productPrice)}</p>
         <Counter
           handleClick={{ addCount, removeCount, updateCount }}
           itemCount={amount}

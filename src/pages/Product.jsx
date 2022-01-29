@@ -1,4 +1,3 @@
-import axios from '../config/axios';
 import defaultImg from '../assets/images/default_product_img.png';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -6,9 +5,7 @@ import { getProductById } from '../api/product';
 import { formatThaiCurrency } from '../services/currencyService';
 
 import Counter from '../components/products/Counter';
-import AddToCartBtn from '../components/cart/AddToCartBtn';
 import Button from '../components/Button';
-import ProductCarousel from '../components/products/Carousel';
 import { toast } from 'react-toastify';
 
 const Product = () => {
@@ -32,11 +29,17 @@ const Product = () => {
     setItemCount((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
+  const handleAddToCart = () => {
+    // Check if current cart has this product
+    // const isInCart = cart.cartItems.find((el) => el.product.id === productId);
+    console.log('hi');
+  };
+
   useEffect(() => {
     getProductById(id)
       .then((res) => setProduct(res.data.product))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   return (
     <div className="container m-auto">
@@ -64,7 +67,11 @@ const Product = () => {
             itemCount={itemCount}
             handleClick={{ addCount, removeCount, updateCount }}
           />
-          <Button text={'Add to Cart'} className={'bg-primary text-base'} />
+          <Button
+            text={'Add to Cart'}
+            className={'bg-primary text-base'}
+            handleClick={handleAddToCart}
+          />
         </div>
       </div>
     </div>

@@ -30,6 +30,12 @@ const CartContextProvider = ({ children }) => {
   }, [user]);
 
   const updateCartItem = async (productId, amount) => {
+    if (amount === 0) {
+      return;
+    }
+    // Check if current cart has this product
+    const isInCart = cart.cartItems.find((el) => el.product.id === productId);
+
     try {
       const res = await updateCart(productId, amount);
       if (res.status === 200) {
