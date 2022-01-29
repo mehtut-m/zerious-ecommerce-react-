@@ -14,9 +14,10 @@ const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
         (el) => el.id === action.payload.id
       );
       const currCart = [...state.cartItems];
+
       // If not index found
       if (cartIdx === -1) {
-        return state;
+        return { ...state, cartItems: [...currCart, action.payload] };
       }
       currCart[cartIdx].amount = action.payload.amount;
       return { ...state, cartItems: [...currCart] };

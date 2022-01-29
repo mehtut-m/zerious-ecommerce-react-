@@ -9,21 +9,25 @@ const Counter = ({ itemCount, handleClick }) => {
   const handleClickSubtract = () => {
     removeCount();
   };
+  const handleChange = (e) => {
+    //
+  };
 
   return (
     <div className="counter-container flex h-8 text-base">
-      <button className="border-2 w-6" onClick={handleClickSubtract}>
+      <button className="border w-6" onClick={handleClickSubtract}>
         -
       </button>
       <input
         type="number"
-        className="product-count w-12 p-2 text-center rounded-none"
+        className="product-count w-12 p-2 border text-center rounded-none"
         value={itemCount}
         min="1"
-        onChange={(e) => updateCount(e.target.value)}
+        disabled
+        // onChange={(e) => setCurrentCount(e.target.value)}
       />
 
-      <button className="border-2 w-6 " onClick={handleClickAdd}>
+      <button className="border w-6 " onClick={handleClickAdd}>
         +
       </button>
     </div>

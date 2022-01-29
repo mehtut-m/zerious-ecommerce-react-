@@ -1,15 +1,16 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../SearchBar';
 import CartShortCut from '../cart/CartShortCut';
 import { AuthContext } from '../../contexts/AuthContext';
 import { CartContext } from '../../contexts/CartContext';
 import CartInfo from '../cart/CartInfo';
+import MainMenu from '../menu/MainMenu';
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
   const [cartOn, setCartOn] = useState(false);
+  const [menuOn, setMenuOn] = useState(false);
 
   const closeCartInfo = () => {
     setCartOn(false);
@@ -17,6 +18,11 @@ const Navbar = () => {
   const toggleCartInfo = () => {
     setCartOn((prev) => !prev);
   };
+  const toggleMainMenu = () => {
+    setMenuOn((prev) => !prev);
+  };
+
+  console.log(menuOn);
 
   return (
     <nav className="flex items-center justify-between h-16 text-2xl px-4 container">
@@ -25,7 +31,7 @@ const Navbar = () => {
           <span className="font-['Quicksand'] text-primary"> Z</span>rious
         </Link>
       </div>
-      <div className="menu-container">
+      <div className="menu-container ">
         {/* <SearchBar /> */}
         {user.isAuth && (
           <CartShortCut
@@ -34,9 +40,19 @@ const Navbar = () => {
             handleClick={toggleCartInfo}
           />
         )}
-        <i className="bi bi-list text-white ml-5"></i>
+
+        <button className="ml-5" onClick={toggleMainMenu}>
+          <i className="bi bi-list text-white"></i>
+        </button>
       </div>
-      <CartInfo closeCanvas={closeCartInfo} cartOn={cartOn} cart={cart} />
+
+      {/* <CartInfo closeCanvas={closeCartInfo} cartOn={cartOn} cart={cart} /> */}
+      {!cartOn || (
+        <CartInfo closeCanvas={closeCartInfo} cartOn={cartOn} cart={cart} />
+      )}
+      {!menuOn || (
+        <MainMenu closeCanvas={closeCartInfo} menuOn={menuOn} cart={cart} />
+      )}
     </nav>
   );
 };

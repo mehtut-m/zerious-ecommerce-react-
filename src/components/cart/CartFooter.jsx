@@ -9,9 +9,7 @@ const CartFooter = ({ cartItems }) => {
   return (
     <div className="grid grid-cols-2">
       <h4 className="text-lg">Sub Total</h4>
-      <p className="text-lg text-right">{`฿ ${formatThaiCurrency(
-        subTotal
-      )}`}</p>
+      <p className="text-lg text-right">{`${formatThaiCurrency(subTotal)}`}</p>
     </div>
   );
 };

@@ -33,8 +33,11 @@ const CartContextProvider = ({ children }) => {
     if (amount === 0) {
       return;
     }
-    // Check if current cart has this product
-    const isInCart = cart.cartItems.find((el) => el.product.id === productId);
+
+    // // Check if current cart has this product
+    const itemIdx = cart.cartItems.findIndex(
+      (el) => el.product.id === productId
+    );
 
     try {
       const res = await updateCart(productId, amount);
