@@ -1,4 +1,4 @@
-import defaultImg from '../assets/images/default_product_img.png';
+import defaultImg from '../assets/images/default-product-img.png';
 import React, { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { useParams } from 'react-router-dom';
@@ -46,7 +46,7 @@ const Product = () => {
       const isInCartIdx = cart.cartItems.findIndex((el) => {
         return el.product.id === product.id;
       });
-
+      // Check if current cart has this product
       if (isInCartIdx === -1) {
         await updateCartItem(product.id, itemCount);
       } else {
@@ -60,7 +60,7 @@ const Product = () => {
   };
 
   return (
-    <div className="container m-auto">
+    <main className="container m-auto">
       <div className="product-info flex flex-wrap justify-between w-full container">
         <div className="product-img-container w-full md:max-w-md">
           <img
@@ -92,7 +92,7 @@ const Product = () => {
           />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

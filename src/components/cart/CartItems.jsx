@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Counter from '../products/Counter';
 import { CartContext } from '../../contexts/CartContext';
 import { formatThaiCurrency } from '../../services/currencyService';
-import defaultImg from '../../assets/images/default_product_img.png';
+import defaultImg from '../../assets/images/default-product-img.png';
 
 const CartItems = ({ cartItem }) => {
   const { updateCartItem } = useContext(CartContext);

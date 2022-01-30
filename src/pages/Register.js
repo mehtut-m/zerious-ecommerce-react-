@@ -3,10 +3,10 @@ import RegisterForm from '../components/RegisterForm';
 
 function Register() {
   return (
-    <div>
+    <main>
       <h1 className="font-medium text-2xl">Create Account</h1>
       <RegisterForm />
-    </div>
+    </main>
   );
 }
 

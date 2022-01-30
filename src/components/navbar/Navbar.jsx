@@ -7,7 +7,7 @@ import CartInfo from '../cart/CartInfo';
 import MainMenu from '../menu/MainMenu';
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
   const [cartOn, setCartOn] = useState(false);
   const [menuOn, setMenuOn] = useState(false);

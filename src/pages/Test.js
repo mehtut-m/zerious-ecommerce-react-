@@ -1,8 +1,12 @@
 import React from 'react';
 
-import Carousel from '../components/products/Carousel';
+import Checkout from './Checkout';
 const Test = () => {
-  return <> </>;
+  return (
+    <>
+      <Checkout />
+    </>
+  );
 };
 
 export default Test;

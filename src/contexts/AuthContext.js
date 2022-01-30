@@ -1,4 +1,6 @@
 import { createContext, useEffect, useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import axios from '../config/axios';
 import { clearToken, getToken, setToken } from '../services/localStorage';
 import { toast } from 'react-toastify';
@@ -10,6 +12,7 @@ const initialState = { token: getToken(), user: null, isAuth: false };
 
 const AuthContextProvider = ({ children }) => {
   const [user, dispatch] = useReducer(authReducer, initialState);
+  const navigate = useNavigate();
 
   const logUserIn = (token, user) => {
     setToken(token);
@@ -27,6 +30,7 @@ const AuthContextProvider = ({ children }) => {
       payload: {},
     });
     toast.info('You are logged out, See you later.');
+    navigate('/', { replace: true });
   };
 
   const signinOrganic = async (email, password) => {
@@ -117,6 +121,7 @@ const AuthContextProvider = ({ children }) => {
         signinWithFacebook,
         signinOrganic,
         register,
+        logOut,
         user,
       }}
     >

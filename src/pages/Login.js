@@ -20,7 +20,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 bg-gradient-to-b from-black to-main-bg-color  flex flex-col justify-center py-12 px-6 lg:px-8 login">
+    <main className="min-h-screen bg-gray-100 bg-gradient-to-b from-black to-main-bg-color  flex flex-col justify-center py-12 px-6 lg:px-8 login">
       <div className="sm:mx-auto sm:w-full sm:max-w-md mb-5">
         <h2 className="mt-6 text-center text-3xl text-white font-normal">
           Sign In to
@@ -120,7 +120,7 @@ function Login() {
           </form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

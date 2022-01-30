@@ -6,10 +6,10 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   return (
-    <div className="">
+    <main className="">
       <HobbyWrapper />
       <ProductList />
-    </div>
+    </main>
   );
 }
 
