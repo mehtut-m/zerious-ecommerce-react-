@@ -16,17 +16,21 @@ const CartContextProvider = ({ children }) => {
     cartItems: [],
   });
 
-  useEffect(() => {
+  const loadCartInfo = () => {
     if (user) {
       getMyCart(user.id)
         .then((res) => {
-          console.log(res);
           dispatch({
             type: 'LOAD_CART_ITEM',
             payload: res.data.order,
           });
         })
         .catch((err) => console.log(err));
+    }
+  };
+  useEffect(() => {
+    if (user) {
+      loadCartInfo();
     }
   }, [user]);
 
@@ -54,7 +58,7 @@ const CartContextProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, updateCartItem }}>
+    <CartContext.Provider value={{ cart, updateCartItem, loadCartInfo }}>
       {children}
     </CartContext.Provider>
   );

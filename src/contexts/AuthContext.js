@@ -39,10 +39,12 @@ const AuthContextProvider = ({ children }) => {
         email,
         password,
       });
+
       logUserIn(res.data.token, res.data.user);
       return res.data.user;
     } catch (error) {
       console.log(error);
+      toast.warning('Invalid Email or Password');
     }
   };
 
