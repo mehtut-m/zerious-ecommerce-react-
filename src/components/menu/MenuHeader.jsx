@@ -1,12 +1,6 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
 import defaultImg from '../../assets/images/default-profile.png';
 
-const MenuHeader = ({ isAuth }) => {
-  const {
-    user: { user },
-  } = useContext(AuthContext);
-
+const MenuHeader = ({ isAuth, user }) => {
   return isAuth ? (
     <div className="flex flex-1 border-b py-3">
       <img
@@ -15,7 +9,7 @@ const MenuHeader = ({ isAuth }) => {
         className="w-12 h-12 rounded-full text-sm"
       />
       <div className="user-info ml-6 ">
-        <h3 className="text-base">Mehtut Menon</h3>
+        <h3 className="text-base">{`${user.firstName} ${user.lastName}`}</h3>
         <p className="text-sm text-primary">Z-Point : 20 pts</p>
       </div>
     </div>
