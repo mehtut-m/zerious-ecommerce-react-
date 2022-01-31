@@ -7,7 +7,7 @@ const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
     case LOAD_CART_ITEM: {
       const { orderItem: cartItems, ...order } = action.payload;
 
-      return { order: order, cartItems: cartItems };
+      return { order: order, cartItems: cartItems || [] };
     }
     case UPDATE_CART_ITEM: {
       const cartIdx = state.cartItems.findIndex(

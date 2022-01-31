@@ -14,7 +14,7 @@ const OrderSummaryFooter = () => {
       </div>
       <div className="flex flex-1 justify-between items-center my-2">
         <span>Discount</span>
-        <span className="text-red-500">฿ -20</span>
+        <span className="text-red-500">฿ 0</span>
       </div>
       <div className="flex flex-1 justify-between items-center py-2 border-t">
         <span>Grand Total</span>

@@ -22,8 +22,6 @@ const Navbar = () => {
     setMenuOn((prev) => !prev);
   };
 
-  console.log(menuOn);
-
   return (
     <nav className="flex items-center justify-between h-16 text-2xl px-4 container">
       <div className="logo">

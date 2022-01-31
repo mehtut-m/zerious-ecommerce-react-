@@ -4,7 +4,7 @@ import './Cart.css';
 const CartShortCut = ({ cart, handleClick }) => {
   const { cartItems } = cart;
 
-  const cartItemCount = cartItems.length;
+  const cartItemCount = cartItems?.length;
   return (
     <>
       <button className="relative" onClick={handleClick}>
