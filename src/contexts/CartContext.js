@@ -3,6 +3,8 @@ import cartReducer from '../reducers/cart';
 import { updateCart } from '../api/cart';
 import { getMyCart } from '../api/cart';
 import { AuthContext } from '../contexts/AuthContext';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CartContext = createContext();
 
@@ -16,6 +18,8 @@ const CartContextProvider = ({ children }) => {
     cartItems: [],
   });
 
+  const navigate = useNavigate();
+
   const loadCartInfo = () => {
     if (user) {
       getMyCart(user.id)
@@ -28,6 +32,7 @@ const CartContextProvider = ({ children }) => {
         .catch((err) => console.log(err));
     }
   };
+
   useEffect(() => {
     if (user) {
       loadCartInfo();
@@ -38,7 +43,6 @@ const CartContextProvider = ({ children }) => {
     if (amount === 0) {
       return;
     }
-
     // // Check if current cart has this product
     const itemIdx = cart.cartItems.findIndex(
       (el) => el.product.id === productId
@@ -57,8 +61,18 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
+  const successfullyCheckout = () => {
+    toast.success('Thakyou for your purchase');
+    setTimeout(() => {
+      navigate('/');
+      loadCartInfo();
+    }, 2500);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, updateCartItem, loadCartInfo }}>
+    <CartContext.Provider
+      value={{ cart, updateCartItem, loadCartInfo, successfullyCheckout }}
+    >
       {children}
     </CartContext.Provider>
   );

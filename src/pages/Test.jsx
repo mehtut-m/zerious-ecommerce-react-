@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
-import CheckoutCreditCard from '../components/order/CheckoutCreditCard';
+import TestCreditCard from './TestCreditCard';
+import CheckoutCreditCard from '../components/checkOut/CheckoutCreditCard';
 import axios from '../config/axios';
 import { CartContext } from '../contexts/CartContext';
 import Checkout from './Checkout';
@@ -30,7 +31,12 @@ const Test = () => {
   };
   return (
     <>
-      <CheckoutCreditCard
+      {/* <CheckoutCreditCard
+        createCreditCardCharge={createCreditCardCharge}
+        cart={cart}
+        subTotal={subTotal}
+      /> */}
+      <TestCreditCard
         createCreditCardCharge={createCreditCardCharge}
         cart={cart}
         subTotal={subTotal}

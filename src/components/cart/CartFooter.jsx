@@ -1,9 +1,7 @@
 import { formatThaiCurrency } from '../../services/currencyService';
 
 const CartFooter = ({ cartItems }) => {
-  console.log(cartItems);
   const subTotal = cartItems.reduce((sum, item) => {
-    console.log(item);
     return item.product.price * item.amount + sum;
   }, 0);
   return (

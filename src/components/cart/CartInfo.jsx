@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import './Cart.css';
 import CartItemList from './CartItemList';
 import Button from '../Button';
 import CartFooter from './CartFooter';
 import Drawer from '../Drawer';
+import { useNavigate } from 'react-router-dom';
+
 const CartInfo = ({ closeCanvas, cartOn, cart }) => {
   const { cartItems } = cart;
+  const navigate = useNavigate();
 
   return (
     <>
@@ -24,7 +26,12 @@ const CartInfo = ({ closeCanvas, cartOn, cart }) => {
 
             <div className="cart-footer pt-5 border-t mt-auto">
               <CartFooter cartItems={cartItems} />
-              <Button text="Check Out"></Button>
+              <Button
+                text="Check Out"
+                handleClick={() => {
+                  navigate('/checkout');
+                }}
+              ></Button>
             </div>
           </>
         )}

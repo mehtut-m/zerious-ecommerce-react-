@@ -7,9 +7,11 @@ import CartInfo from './components/cart/CartInfo';
 function App() {
   return (
     <div className="App relative">
-      <Header />
-      <RouteConfig />
-      <ToastContainer theme="dark" />
+      <main className="flex flex-col items-center">
+        <Header />
+        <RouteConfig />
+        <ToastContainer theme="dark" />
+      </main>
     </div>
   );
 }

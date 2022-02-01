@@ -1,6 +1,7 @@
 const UPDATE_CART_ITEM = 'UPDATE_CART_ITEM';
 const DELETE_CART_ITEM = 'DELETE_CART_ITEM';
 const LOAD_CART_ITEM = 'LOAD_CART_ITEM';
+const CHECKOUT_CART_ITEM = 'CHECKOUT_CART_ITEM';
 
 const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
   switch (action.type) {
@@ -9,6 +10,7 @@ const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
 
       return { order: order, cartItems: cartItems || [] };
     }
+    case CHECKOUT_CART_ITEM:
     case UPDATE_CART_ITEM: {
       const cartIdx = state.cartItems.findIndex(
         (el) => el.id === action.payload.id

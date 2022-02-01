@@ -28,7 +28,6 @@ const OrderSummaryFooter = ({ cart }) => {
         <span>Grand Total</span>
         <span>{formatThaiCurrency(subTotal + shipping + discount)}</span>
       </div>
-      <Button text={'Proceed to Payment'} />
     </div>
   );
 };

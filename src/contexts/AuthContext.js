@@ -96,6 +96,13 @@ const AuthContextProvider = ({ children }) => {
         firstName,
         lastName,
       });
+
+      if (res.status === 200) {
+        setTimeout(() => {
+          logUserIn(res.data.token, res.data.user);
+          navigate('/');
+        }, 3000);
+      }
     } catch (error) {
       console.log(error);
     }

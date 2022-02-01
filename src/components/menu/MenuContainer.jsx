@@ -5,6 +5,7 @@ import order from '../../assets/icons/clipboard.svg';
 import signOut from '../../assets/icons/Logout.svg';
 
 import MenuItems from './MenuItems';
+import { Link } from 'react-router-dom';
 
 const MenuContainer = ({ isAuth, logOut }) => {
   return (
@@ -24,7 +25,7 @@ const MenuContainer = ({ isAuth, logOut }) => {
             <img src={heart} alt="favorite-items" />
             Favorite Items
           </MenuItems>
-          <MenuItems>
+          <MenuItems path="/user/order">
             <img src={order} alt="Previous Order" /> Previous Orders
           </MenuItems>
           <MenuItems handleClick={logOut}>
