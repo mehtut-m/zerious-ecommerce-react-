@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import axios from '../config/axios';
@@ -12,6 +12,8 @@ const initialState = { token: getToken(), user: null, isAuth: false };
 
 const AuthContextProvider = ({ children }) => {
   const [user, dispatch] = useReducer(authReducer, initialState);
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
 
   const logUserIn = (token, user) => {
@@ -132,6 +134,7 @@ const AuthContextProvider = ({ children }) => {
         register,
         logOut,
         user,
+        loading,
       }}
     >
       {children}

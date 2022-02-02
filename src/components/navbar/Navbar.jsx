@@ -12,9 +12,6 @@ const Navbar = () => {
   const [cartOn, setCartOn] = useState(false);
   const [menuOn, setMenuOn] = useState(false);
 
-  const closeCartInfo = () => {
-    setCartOn(false);
-  };
   const toggleCartInfo = () => {
     setCartOn((prev) => !prev);
   };
@@ -44,13 +41,17 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* <CartInfo closeCanvas={closeCartInfo} cartOn={cartOn} cart={cart} /> */}
-      {!cartOn || (
-        <CartInfo closeCanvas={closeCartInfo} cartOn={cartOn} cart={cart} />
-      )}
-      {!menuOn || (
-        <MainMenu closeCanvas={closeCartInfo} menuOn={menuOn} cart={cart} />
-      )}
+      <CartInfo
+        closeCanvas={() => setCartOn(false)}
+        cartOn={cartOn}
+        cart={cart}
+      />
+
+      <MainMenu
+        handleCloseDrawer={() => setMenuOn(false)}
+        menuOn={menuOn}
+        cart={cart}
+      />
     </nav>
   );
 };

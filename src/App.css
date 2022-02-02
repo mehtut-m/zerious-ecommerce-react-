@@ -4,6 +4,8 @@
 }
 .App {
   background-color: #fff;
+  overflow: hidden;
+  min-height: 100vh;
 }
 .header {
   background: linear-gradient(93.32deg, #212121 22.81%, #373232 88.28%);

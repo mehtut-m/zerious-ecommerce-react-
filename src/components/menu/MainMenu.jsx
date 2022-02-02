@@ -12,7 +12,7 @@ const MainMenu = ({ menuOn, handleCloseDrawer }) => {
   } = useContext(AuthContext);
 
   return (
-    <Drawer drawerOn={menuOn}>
+    <Drawer drawerOn={menuOn} handleCloseDrawer={handleCloseDrawer}>
       <div className="menu-header">
         <button className="block ml-auto mt-3" onClick={handleCloseDrawer}>
           <i className="bi bi-x-lg"></i>

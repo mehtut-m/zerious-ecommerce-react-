@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthContext } from '../contexts/AuthContext';
@@ -16,20 +16,18 @@ function RouteConfig() {
   const {
     user: { isAuth },
   } = useContext(AuthContext);
-  console.log(isAuth);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/test" element={<Test />} />
       <Route path="/product/:id" element={<Product />} />
-      {/* <Route path="/checkout" element={<Checkout />} /> */}
 
       <Route path="/user/order" element={<OrderStatusSummary />} />
       <Route path="/user/order/:id" element={<OrderStatusDetail />} />
+      <Route path="/checkout" element={<Checkout />} />
       {isAuth ? (
-        <>
-          <Route path="/checkout" element={<Checkout />} />
-        </>
+        <></>
       ) : (
         <>
           <Route path="/login" element={<Login />} />

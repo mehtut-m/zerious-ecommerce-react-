@@ -1,4 +1,4 @@
-import OrderStatusItem from './OrderStatusItem/OrderStatusItem';
+import OrderStatusItem from './OrderStatusItem/OrderItemContainer';
 
 const OrderStatusList = () => {
   return (
