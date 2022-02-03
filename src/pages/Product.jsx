@@ -1,20 +1,25 @@
 import defaultImg from '../assets/images/default-product-img.png';
 import React, { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../api/product';
 import { formatThaiCurrency } from '../services/currencyService';
 
 import Counter from '../components/products/Counter';
 import Button from '../components/Button';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Product = () => {
   const { cart, updateCartItem } = useContext(CartContext);
+  const {
+    user: { user, isAuth },
+  } = useContext(AuthContext);
 
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProductById(id)
@@ -42,6 +47,10 @@ const Product = () => {
 
   const handleAddToCart = async () => {
     try {
+      // Check if user is log in
+      if (!isAuth) {
+        return navigate('/login');
+      }
       // Check if current cart has this product
       const isInCartIdx = cart.cartItems.findIndex((el) => {
         return el.product.id === product.id;

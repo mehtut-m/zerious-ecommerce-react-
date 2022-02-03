@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx}'],
+  content: ['./src/**/*.{html,js,jsx}', './node_modules/flowbite/**/*.js'],
   theme: {
     extend: {
       colors: {
@@ -10,5 +10,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tw-elements/dist/plugin')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tw-elements/dist/plugin'),
+    require('flowbite/plugin'),
+  ],
 };

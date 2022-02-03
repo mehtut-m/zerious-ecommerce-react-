@@ -9,14 +9,18 @@ import AuthContextProvider from './contexts/AuthContext';
 import CartContextProvider from './contexts/CartContext';
 
 import 'tw-elements';
+import 'flowbite';
+import OrderContextProvider from './contexts/OrderContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <CartContextProvider>
-          <App />
-        </CartContextProvider>
+        <OrderContextProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </OrderContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

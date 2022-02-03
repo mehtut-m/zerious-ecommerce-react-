@@ -5,7 +5,6 @@ import order from '../../assets/icons/clipboard.svg';
 import signOut from '../../assets/icons/Logout.svg';
 
 import MenuItems from './MenuItems';
-import { Link } from 'react-router-dom';
 
 const MenuContainer = ({ isAuth, logOut }) => {
   return (
@@ -13,7 +12,7 @@ const MenuContainer = ({ isAuth, logOut }) => {
       {isAuth ? (
         <>
           {' '}
-          <MenuItems>
+          <MenuItems path="/user/profile">
             <img src={personal} alt="personal-info" />
             Personal Info
           </MenuItems>

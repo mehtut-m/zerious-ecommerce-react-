@@ -1,9 +1,11 @@
 import OrderStatusItem from './OrderStatusItem/OrderItemContainer';
 
-const OrderStatusList = () => {
+const OrderStatusList = ({ orders }) => {
   return (
-    <ul>
-      <OrderStatusItem />
+    <ul className="mt-5">
+      {orders.map((item) => (
+        <OrderStatusItem key={item.id} order={item} />
+      ))}
     </ul>
   );
 };

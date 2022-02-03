@@ -11,7 +11,7 @@ const OrderSummaryItem = ({ orderItem }) => {
       </div>
       <div className="order-item-info px-2 h-full flex flex-col">
         <div className="order-item-info-title flex justify-between items-center">
-          <h3>{product.name}</h3>
+          <h3 className="font-semibold">{product.name}</h3>
           <span className="ml-3 min-w-max block">x {orderItem.amount}</span>
         </div>
         <span className="block mt-3 ml-auto w-max">

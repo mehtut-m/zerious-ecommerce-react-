@@ -37,8 +37,8 @@ const CartItems = ({ cartItem }) => {
         alt={productName}
         className="w-24 h-24 object-cover "
       />
-      <div className="cart-item-info">
-        <Link className="text-base" to={`/product/${productId}`}>
+      <div className="cart-item-info flex flex-col justify-between">
+        <Link className="text-base font-semibold" to={`/product/${productId}`}>
           {productName}
         </Link>
         <p className="text-base">{formatThaiCurrency(productPrice)}</p>

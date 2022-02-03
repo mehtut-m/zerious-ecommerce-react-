@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import BreadCrumb from '../components/BreadCrumb';
-import AddressSelection from '../components/checkOut/AddressItems';
+import AddressSelection from '../components/checkOut/AddressSelection';
 import OrderSummary from '../components/checkOut/OrderSummary';
 import OrderSummaryFooter from '../components/checkOut/OrderSummaryFooter';
 import CheckoutCreditCard from '../components/checkOut/CheckoutCreditCard';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Checkout = () => {
+  const { user } = useContext(AuthContext);
+  const [selectedAddressIdx, setSelectedAddressIdx] = useState(0);
+  const address = user?.user?.address;
   const { cart, loadCartInfo, successfullyCheckout } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -22,14 +26,22 @@ const Checkout = () => {
 
   const createCreditCardCharge = async (email, name, amount, token) => {
     try {
+      const {
+        name,
+        address: fullAddress,
+        telephoneNo,
+      } = address[selectedAddressIdx];
+
+      const formattedAddress = `${name} ${fullAddress} ${telephoneNo}`;
+
       const res = await axios.post('/checkout/credit-card', {
         email,
         name,
         amount,
         token,
+        address: formattedAddress,
       });
 
-      console.log(res.data);
       if (res.status !== 200) {
         toast.error('Your payment is rejected');
       }
@@ -47,9 +59,14 @@ const Checkout = () => {
 
   return (
     <main className="container flex justify-center items-center">
-      <div className="">
+      <div className="w-full">
         <BreadCrumb />
-        <AddressSelection />
+        <AddressSelection
+          address={address}
+          user={user}
+          selectedAddressIdx={selectedAddressIdx}
+          setSelectedAddressIdx={setSelectedAddressIdx}
+        />
         <OrderSummary cart={cart} />
         <OrderSummaryFooter cart={cart} />
 

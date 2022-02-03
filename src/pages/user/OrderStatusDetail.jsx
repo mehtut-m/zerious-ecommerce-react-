@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOrderById } from '../../api/order';
 import OrderSummaryList from '../../components/checkOut/OrderSummaryList';
 import TrackingContainer from '../../components/order/OrderStatusItem/OrderTracking/TrackingContainer';
 import ProgressBar from '../../components/order/OrderStatusItem/ProgressBar';
 import { formatThaiCurrency } from '../../services/currencyService';
+
 const OrderStatusDetail = () => {
   const { id } = useParams();
   const [order, setOrder] = useState({});
   const [subTotal, setSubTotal] = useState(0);
 
   const { orderItem = [] } = order;
-
+  console.log(order);
   useEffect(() => {
     getOrderById(id)
       .then((res) => {
@@ -22,7 +23,7 @@ const OrderStatusDetail = () => {
   }, [id]);
 
   return (
-    <div>
+    <main className="container">
       {/* Order Header */}
       <div className="flex justify-between bg-slate-500">
         <Link to="/user/order">Back</Link>
@@ -35,11 +36,7 @@ const OrderStatusDetail = () => {
       <div className="status-info flex flex-col md:flex-row ">
         <div className="address-info bg-red-400 md:max-w-[40%] px-6">
           <h3>Address</h3>
-          <p>เมธัส เมนอน</p>
-          <p>
-            (+66) 814304912 28/10 ชักพระซอย10.ชักพระ แขวงตลิ่งชัน เขตตลิ่งชัน
-            กทม. 10170 เขตตลิ่งชัน จังหวัดกรุงเทพมหานคร 10170
-          </p>
+          <p>{order.address}</p>
         </div>
 
         {/* Progression Details */}
@@ -52,8 +49,8 @@ const OrderStatusDetail = () => {
         <OrderSummaryList cartItems={orderItem} />
       </div>
 
-      {/* Total Amount Detail */}
-      <div>
+      <div className="order-status-footer">
+        {/* Total Amount Detail */}
         <h3>Total</h3>
 
         <div className="px-2">
@@ -75,7 +72,7 @@ const OrderStatusDetail = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -3,7 +3,7 @@ import HobbyItem from './HobbyItem';
 
 const HobbyList = () => {
   return (
-    <div className="grid grid-cols-4 grid-flow-row gap-4 ">
+    <div className="grid grid-cols-4 grid-flow-row gap-4  lg:flex lg:gap-0 lg:border-seperate">
       <HobbyItem title={'Desktop Gaming'} bsIcon={'bi-pc-display'} />
       <HobbyItem title={'Desk Decorating'} bsIcon={'bi-keyboard'} />
       <HobbyItem title={'Console Gaming'} bsIcon={'bi-controller'} />

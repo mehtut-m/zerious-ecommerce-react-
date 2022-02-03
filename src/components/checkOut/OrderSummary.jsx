@@ -5,7 +5,7 @@ const OrderSummary = ({ cart }) => {
 
   return (
     <div className="order-summary-container">
-      <h2 className="text-xl">Order Summary</h2>
+      <h2 className="text-2xl">Order Summary</h2>
       <OrderSummaryList cartItems={cartItems} />
     </div>
   );

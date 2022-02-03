@@ -11,6 +11,7 @@ import Test from '../pages/Test';
 import OrderStatusDetail from '../pages/user/OrderStatusDetail';
 import Checkout from '../pages/Checkout';
 import OrderStatusSummary from '../pages/user/OrderStatusSummary';
+import Profile from '../pages/user/Profile';
 
 function RouteConfig() {
   const {
@@ -23,6 +24,7 @@ function RouteConfig() {
       <Route path="/test" element={<Test />} />
       <Route path="/product/:id" element={<Product />} />
 
+      <Route path="/user/profile" element={<Profile />} />
       <Route path="/user/order" element={<OrderStatusSummary />} />
       <Route path="/user/order/:id" element={<OrderStatusDetail />} />
       <Route path="/checkout" element={<Checkout />} />

@@ -40,6 +40,7 @@ const CartContextProvider = ({ children }) => {
   }, [user]);
 
   const updateCartItem = async (productId, amount) => {
+    console.log('hi');
     if (amount === 0) {
       return;
     }
