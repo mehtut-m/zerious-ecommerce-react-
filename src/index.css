@@ -18,7 +18,7 @@
     @apply border-b py-2;
   }
   .user-pg-title {
-    @apply text-2xl font-semibold;
+    @apply text-2xl font-semibold mb-4;
   }
 }
 @layer base {

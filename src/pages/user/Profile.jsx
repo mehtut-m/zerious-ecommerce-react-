@@ -19,10 +19,12 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <main className="container shadow-md mt-6">
+    <main className="container shadow-md mt-6 rounded-lg border">
       <div className="user-pg-header">
         <h2 className="user-pg-title ">My Profile</h2>
-        <p className="text-base">Manage your account and user profile info</p>
+        <p className="text-base mb-3">
+          Manage your account and user profile info
+        </p>
       </div>
 
       <form className="my-6 px-4 flex flex-row  justify-between">

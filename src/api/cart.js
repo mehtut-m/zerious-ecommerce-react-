@@ -10,4 +10,9 @@ const updateCart = async (productId, amount) => {
   return res;
 };
 
-export { getMyCart, updateCart };
+const deleteItem = async (orderItemId) => {
+  const res = axios.delete(`/order/cart/item/${orderItemId}`);
+  return res;
+};
+
+export { getMyCart, updateCart, deleteItem };

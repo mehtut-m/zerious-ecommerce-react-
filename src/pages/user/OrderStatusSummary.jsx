@@ -10,9 +10,17 @@ const OrderStatusSummary = () => {
   }, []);
 
   return (
-    <main className="container shadow-md mt-6">
+    <main className="container shadow-md mt-6 border rounded-lg">
       <OrderStatusHeader />
-      <OrderStatusList orders={orders} />
+      {orders.length !== 0 ? (
+        <OrderStatusList orders={orders} />
+      ) : (
+        <div className="py-9">
+          <h3 className="text-center">
+            You does not have any order. Try to make one.
+          </h3>
+        </div>
+      )}
     </main>
   );
 };

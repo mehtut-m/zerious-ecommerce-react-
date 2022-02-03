@@ -6,7 +6,7 @@ import { formatThaiCurrency } from '../../services/currencyService';
 import defaultImg from '../../assets/images/default-product-img.png';
 
 const CartItems = ({ cartItem }) => {
-  const { updateCartItem } = useContext(CartContext);
+  const { updateCartItem, deleteCartItem } = useContext(CartContext);
   const {
     amount,
     product: {
@@ -29,6 +29,13 @@ const CartItems = ({ cartItem }) => {
       await updateCartItem(productId, value);
     }
   };
+  const deleteItem = async () => {
+    try {
+      await deleteCartItem(cartItem.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="flex mb-4 gap-4 ">
@@ -37,10 +44,19 @@ const CartItems = ({ cartItem }) => {
         alt={productName}
         className="w-24 h-24 object-cover "
       />
-      <div className="cart-item-info flex flex-col justify-between">
-        <Link className="text-base font-semibold" to={`/product/${productId}`}>
-          {productName}
-        </Link>
+      <div className="cart-item-info flex flex-col justify-between w-full">
+        <div className="flex justify-between w-full">
+          <Link
+            className="text-base font-semibold"
+            to={`/product/${productId}`}
+          >
+            {productName}
+          </Link>
+
+          <button className="block" onClick={deleteItem}>
+            <i className="bi bi-x-lg text-sm"></i>
+          </button>
+        </div>
         <p className="text-base">{formatThaiCurrency(productPrice)}</p>
         <Counter
           handleClick={{ addCount, removeCount, updateCount }}

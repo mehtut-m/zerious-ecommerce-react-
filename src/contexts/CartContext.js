@@ -1,9 +1,8 @@
 import { createContext, useEffect, useReducer, useContext } from 'react';
 import cartReducer from '../reducers/cart';
-import { updateCart } from '../api/cart';
-import { getMyCart } from '../api/cart';
+import { updateCart, getMyCart, deleteItem } from '../api/cart';
 import { AuthContext } from '../contexts/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const CartContext = createContext();
@@ -40,7 +39,6 @@ const CartContextProvider = ({ children }) => {
   }, [user]);
 
   const updateCartItem = async (productId, amount) => {
-    console.log('hi');
     if (amount === 0) {
       return;
     }
@@ -62,6 +60,20 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
+  const deleteCartItem = async (orderItemId) => {
+    try {
+      const res = await deleteItem(orderItemId);
+      if (res.status === 204) {
+        dispatch({
+          type: 'DELETE_CART_ITEM',
+          payload: { orderItemId: orderItemId },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const successfullyCheckout = () => {
     toast.success('Thakyou for your purchase');
     setTimeout(() => {
@@ -72,7 +84,13 @@ const CartContextProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, updateCartItem, loadCartInfo, successfullyCheckout }}
+      value={{
+        cart,
+        updateCartItem,
+        loadCartInfo,
+        successfullyCheckout,
+        deleteCartItem,
+      }}
     >
       {children}
     </CartContext.Provider>

@@ -66,7 +66,10 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className="flex flex-col gap-3" onSubmit={handleSubmitRegister}>
+    <form
+      className="flex flex-col gap-3 w-full md:w-[50%] p-5 py-8"
+      onSubmit={handleSubmitRegister}
+    >
       <FormInput
         title="email"
         type="email"

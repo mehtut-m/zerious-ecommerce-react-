@@ -81,7 +81,9 @@ function Login() {
                 text="Sign In"
               />
             </div>
-
+            <div className="w-full text-center border-b leading-[0.1em]">
+              <span className="bg-white px-3 text-gray-300">or</span>
+            </div>
             {/* Third Party Login */}
             <GoogleLogin
               clientId="413135692964-nlaifqt1dgkk9tijhsh0c0aut58kj32f.apps.googleusercontent.com"

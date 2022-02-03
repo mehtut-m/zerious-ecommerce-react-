@@ -25,7 +25,11 @@ const cartReducer = (state = { order: {}, cartItems: [] }, action) => {
       return { ...state, cartItems: [...currCart] };
     }
     case DELETE_CART_ITEM: {
-      return;
+      const cartIdx = state.cartItems.findIndex(
+        (el) => el.id === action.payload.orderItemId
+      );
+      state.cartItems.splice(cartIdx, 1);
+      return { ...state };
     }
     default: {
       return state;
