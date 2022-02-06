@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { OrderContext } from '../../contexts/OrderContext';
-import OrderStatusHeader from '../../components/order/OrderStatusHeader';
 import OrderStatusList from '../../components/order/OrderStatusList';
+import SectionHeader from '../../components/SectionHeader';
 
 const OrderStatusSummary = () => {
   const { orders, refreshOrder } = useContext(OrderContext);
@@ -11,7 +11,11 @@ const OrderStatusSummary = () => {
 
   return (
     <main className="container shadow-md mt-6 border rounded-lg">
-      <OrderStatusHeader />
+      <SectionHeader
+        title="My Orders"
+        subtitle="Keep track of your extremely cool purchase here."
+      />
+
       {orders.length !== 0 ? (
         <OrderStatusList orders={orders} />
       ) : (

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import OrderSummaryList from '../../checkOut/OrderSummaryList';
+import OrderSummaryList from '../../CheckOut/OrderSummaryList';
 import { formatThaiCurrency } from '../../../services/currencyService';
 
 const ORDER_STATUS = {

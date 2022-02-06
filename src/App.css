@@ -17,3 +17,6 @@
   max-width: 1080px;
   padding: 1.25rem;
 }
+.main-container {
+  min-height: calc(100vh - 4rem - 3.5rem);
+}

@@ -14,6 +14,8 @@
   .progress-status {
     @apply p-2 rounded-full border-[3px] z-[1] bg-white;
   }
+}
+@layer components {
   .user-pg-header {
     @apply border-b py-2;
   }

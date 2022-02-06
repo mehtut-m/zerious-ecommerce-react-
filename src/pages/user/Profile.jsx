@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import Button from '../../components/Button';
+import SectionHeader from '../../components/SectionHeader';
+
+import defaultProfile from '../../assets/images/default-profile.png';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Profile = () => {
@@ -20,12 +23,10 @@ const Profile = () => {
 
   return (
     <main className="container shadow-md mt-6 rounded-lg border">
-      <div className="user-pg-header">
-        <h2 className="user-pg-title ">My Profile</h2>
-        <p className="text-base mb-3">
-          Manage your account and user profile info
-        </p>
-      </div>
+      <SectionHeader
+        title="My Profile"
+        subtitle="Manage your account and user profile info"
+      />
 
       <form className="my-6 px-4 flex flex-row  justify-between">
         <div className="min-w-max w-full max-w-[55%] grid grid-cols-2 gap-4">
@@ -44,7 +45,7 @@ const Profile = () => {
           />
 
           <label className="text-gray-400 mr-2">Email :</label>
-          <p>crazym2211@gmail.com</p>
+          <p>{user?.email}</p>
 
           <label className="text-gray-400 mr-2">Log In Method :</label>
           <p>Google Account</p>
@@ -55,7 +56,7 @@ const Profile = () => {
           <img
             className="rounded-full w-20 h-20 mb-5"
             referrerPolicy="no-referrer"
-            src="https://lh3.googleusercontent.com/a/AATXAJxzJoabUfsYcAYNDhydg5-cmxmXWv3tJreOgl1O=s96-c"
+            src={defaultProfile}
             alt=""
           />
           <button

@@ -16,7 +16,7 @@ const MenuContainer = ({ isAuth, logOut }) => {
             <img src={personal} alt="personal-info" />
             Personal Info
           </MenuItems>
-          <MenuItems>
+          <MenuItems path="/user/address">
             <img src={address} alt="address" />
             Address
           </MenuItems>

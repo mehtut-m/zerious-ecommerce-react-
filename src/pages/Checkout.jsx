@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import BreadCrumb from '../components/BreadCrumb';
-import AddressSelection from '../components/checkOut/AddressSelection';
-import OrderSummary from '../components/checkOut/OrderSummary';
-import OrderSummaryFooter from '../components/checkOut/OrderSummaryFooter';
-import CheckoutCreditCard from '../components/checkOut/CheckoutCreditCard';
+import AddressSelection from '../components/CheckOut/AddressSelection';
+import OrderSummary from '../components/CheckOut/OrderSummary';
+import OrderSummaryFooter from '../components/CheckOut/OrderSummaryFooter';
+import CheckoutCreditCard from '../components/CheckOut/CheckoutCreditCard';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -55,7 +55,9 @@ const Checkout = () => {
 
   useEffect(() => {
     loadCartInfo();
-  }, []);
+    console.log(user);
+    console.log(address);
+  }, [user]);
 
   return (
     <main className="container flex justify-center items-center">

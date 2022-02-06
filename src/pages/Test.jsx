@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import TestCreditCard from './TestCreditCard';
-import CheckoutCreditCard from '../components/checkOut/CheckoutCreditCard';
+import CheckoutCreditCard from '../components/CheckOut/CheckoutCreditCard';
 import axios from '../config/axios';
 import { CartContext } from '../contexts/CartContext';
 import Checkout from './Checkout';

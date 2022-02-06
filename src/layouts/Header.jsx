@@ -1,14 +1,16 @@
 import React from 'react';
-import Navbar from '../components/navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 const Header = (props) => {
   return (
-    <div
-      className={`${'header'} 
+    <>
+      <header
+        className={`${'header'} 
       bg-transparent sticky top-0 w-full flex justify-center -z-0`}
-    >
-      <Navbar className={'sticky'} />
-    </div>
+      >
+        <Navbar className={'sticky'} />
+      </header>
+    </>
   );
 };
 

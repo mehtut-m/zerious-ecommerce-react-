@@ -13,14 +13,14 @@ const TrackingItem = ({ item }) => {
 
   return (
     <div
-      className="grid grid-cols-3 mb-2"
+      className="grid mb-2"
       style={{ gridTemplateColumns: '0.25fr 1fr 1fr 0.25fr' }}
     >
       <span className="col-start-2 col-span-1 text-right mr-8">
         {status_date}
       </span>
       <div className="ml-10">
-        <span>{status_description}</span>
+        <span className="font-semibold">{status_description}</span>
         {orderComplete && (
           <>
             <p>{delivery_description}</p>

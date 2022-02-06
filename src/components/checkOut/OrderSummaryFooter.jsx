@@ -11,7 +11,7 @@ const OrderSummaryFooter = ({ cart }) => {
   const shipping = 20;
 
   return (
-    <div className="px-2">
+    <div className="px-6">
       <div className="flex flex-1 justify-between items-center my-2">
         <span>Sub Total</span>
         <span>{formatThaiCurrency(subTotal)}</span>

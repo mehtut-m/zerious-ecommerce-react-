@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOrderById } from '../../api/order';
-import OrderSummaryList from '../../components/checkOut/OrderSummaryList';
+import OrderSummaryList from '../../components/CheckOut/OrderSummaryList';
 import TrackingContainer from '../../components/order/OrderStatusItem/OrderTracking/TrackingContainer';
 import ProgressBar from '../../components/order/OrderStatusItem/ProgressBar';
 import { formatThaiCurrency } from '../../services/currencyService';
@@ -12,7 +12,7 @@ const OrderStatusDetail = () => {
   const [subTotal, setSubTotal] = useState(0);
 
   const { orderItem = [] } = order;
-  console.log(order);
+
   useEffect(() => {
     getOrderById(id)
       .then((res) => {
@@ -25,50 +25,54 @@ const OrderStatusDetail = () => {
   return (
     <main className="container">
       {/* Order Header */}
-      <div className="flex justify-between bg-slate-500">
-        <Link to="/user/order">Back</Link>
-        <p>Order No. {id}</p>
-      </div>
-
-      <ProgressBar />
-
-      {/* Order Status Info */}
-      <div className="status-info flex flex-col md:flex-row ">
-        <div className="address-info bg-red-400 md:max-w-[40%] px-6">
-          <h3>Address</h3>
-          <p>{order.address}</p>
+      <div className="rounded-lg overflow-hidden border">
+        <div className="flex justify-between  p-6 bg-black text-white overflow-hidden">
+          <Link to="/user/order" className="hover:text-primary">
+            {'< Back'}
+          </Link>
+          <p className="font-semibold">Order No. {id}</p>
         </div>
 
-        {/* Progression Details */}
-        <TrackingContainer />
-      </div>
+        <ProgressBar />
 
-      {/* Product Details */}
-      <div className="product-list px-6">
-        <h3 className="font-semibold">Order detail</h3>
-        <OrderSummaryList cartItems={orderItem} />
-      </div>
+        {/* Order Status Info */}
+        <div className="status-info flex flex-col md:flex-row bg-secondary">
+          <div className="address-info md:max-w-[40%] px-6 py-4">
+            <h3 className="font-semibold mb-4">Address</h3>
+            <p>{order.address}</p>
+          </div>
 
-      <div className="order-status-footer">
-        {/* Total Amount Detail */}
-        <h3>Total</h3>
+          {/* Progression Details */}
+          <TrackingContainer />
+        </div>
 
-        <div className="px-2">
-          <div className="flex flex-1 justify-between items-center my-2">
-            <span>Sub Total</span>
-            <span>{formatThaiCurrency(subTotal)}</span>
-          </div>
-          <div className="flex flex-1 justify-between items-center my-2">
-            <span>Shipping</span>
-            <span>{formatThaiCurrency(20)}</span>
-          </div>
-          <div className="flex flex-1 justify-between items-center my-2">
-            <span>Discount</span>
-            <span className="text-red-500">{formatThaiCurrency(0)}</span>
-          </div>
-          <div className="flex flex-1 justify-between items-center py-2 border-t mb-5">
-            <span>Grand Total</span>
-            <span>{formatThaiCurrency(subTotal + 20 - 0)}</span>
+        {/* Product Details */}
+        <div className="product-list px-6 py-4">
+          <h3 className="font-semibold">Order detail</h3>
+          <OrderSummaryList cartItems={orderItem} />
+        </div>
+
+        <div className="order-status-footer px-6 py-4 bg-secondary">
+          {/* Total Amount Detail */}
+          <h3 className="font-semibold text-lg">Total</h3>
+
+          <div className="px-2">
+            <div className="flex flex-1 justify-between items-center my-2">
+              <span>Sub Total</span>
+              <span>{formatThaiCurrency(subTotal)}</span>
+            </div>
+            <div className="flex flex-1 justify-between items-center my-2">
+              <span>Shipping</span>
+              <span>{formatThaiCurrency(20)}</span>
+            </div>
+            <div className="flex flex-1 justify-between items-center my-2">
+              <span>Discount</span>
+              <span className="text-red-500">{formatThaiCurrency(0)}</span>
+            </div>
+            <div className="flex flex-1 justify-between items-center py-2 border-t">
+              <span className="font-semibold text-lg mt-4">Grand Total</span>
+              <span>{formatThaiCurrency(subTotal + 20 - 0)}</span>
+            </div>
           </div>
         </div>
       </div>
