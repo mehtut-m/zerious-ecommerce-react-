@@ -19,6 +19,7 @@
     "react-script-hook": "^1.6.0",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.1.0",
+    "sweetalert2": "^11.4.0",
     "tw-elements": "^1.0.0-alpha9",
     "web-vitals": "^2.1.3"
   },

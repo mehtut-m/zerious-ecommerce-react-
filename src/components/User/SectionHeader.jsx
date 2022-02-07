@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SectionHeader = ({ title, subtitle }) => {
   return (
     <div className="user-header">

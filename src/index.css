@@ -15,12 +15,19 @@
     @apply p-2 rounded-full border-[3px] z-[1] bg-white;
   }
 }
+
 @layer components {
   .user-pg-header {
     @apply border-b py-2;
   }
   .user-pg-title {
     @apply text-2xl font-semibold mb-4;
+  }
+  .btn {
+    @apply w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  .hobby-grid {
+    @apply grid-cols-[repeat(auto-fill,minmax(90px,_1fr))];
   }
 }
 @layer base {

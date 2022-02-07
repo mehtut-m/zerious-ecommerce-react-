@@ -12,7 +12,7 @@ const ProgressBar = () => {
     - Order Completed 100%
   */
   return (
-    <div className="progress-bar-container flex justify-between m-6 relative">
+    <div className="progress-bar-container flex justify-between m-6 relative my-12">
       <div className="progress-status  border-[#2dc258]">
         <OrderPlaced
           fill="#2dc258"

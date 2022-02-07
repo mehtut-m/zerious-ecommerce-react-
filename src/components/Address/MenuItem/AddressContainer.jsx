@@ -13,7 +13,7 @@ const AddressContainer = () => {
       {address && address?.length !== 0 ? (
         <div className="address-container flex flex-col p-6">
           {address.map((item) => (
-            <AddressItem key={item.id} />
+            <AddressItem key={item.id} item={item} />
           ))}
         </div>
       ) : (

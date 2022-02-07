@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { OrderContext } from '../../contexts/OrderContext';
 import OrderStatusList from '../../components/order/OrderStatusList';
-import SectionHeader from '../../components/SectionHeader';
+import SectionHeader from '../../components/User/SectionHeader';
 
 const OrderStatusSummary = () => {
   const { orders, refreshOrder } = useContext(OrderContext);

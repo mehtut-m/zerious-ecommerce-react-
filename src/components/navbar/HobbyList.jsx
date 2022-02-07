@@ -2,17 +2,23 @@ import React from 'react';
 import HobbyItem from './HobbyItem';
 
 const HobbyList = () => {
+  const hobbies = [
+    { title: 'All Hobbies', bsIcon: 'bi-pc-display' },
+    { title: 'Desktop Gaming', bsIcon: 'bi-pc-display' },
+    { title: 'Desk Decorating', bsIcon: 'bi-keyboard' },
+    { title: 'Console Gaming', bsIcon: 'bi-controller' },
+    { title: 'Entertainment', bsIcon: 'bi-film' },
+    { title: 'Collectible', bsIcon: 'bi-puzzle' },
+    { title: 'Gadgets', bsIcon: 'bi-smartwatch' },
+    { title: 'Photography', bsIcon: 'bi-camera' },
+    { title: 'Work Out', bsIcon: 'bi-bicycle' },
+  ];
+
   return (
-    <div className="grid grid-cols-4 gap-0 lg:border-seperate">
-      <HobbyItem title={'All Hobbies'} bsIcon={'bi-pc-display'} />
-      <HobbyItem title={'Desktop Gaming'} bsIcon={'bi-pc-display'} />
-      <HobbyItem title={'Desk Decorating'} bsIcon={'bi-keyboard'} />
-      <HobbyItem title={'Console Gaming'} bsIcon={'bi-controller'} />
-      <HobbyItem title={'Entertainment'} bsIcon={'bi-film'} />
-      <HobbyItem title={'Collectible'} bsIcon={'bi-puzzle'} />
-      <HobbyItem title={'Gadgets'} bsIcon={'bi-smartwatch'} />
-      <HobbyItem title={'Photography'} bsIcon={'bi-camera'} />
-      {/* <HobbyItem title={'Work Out'} bsIcon={'bi-bicycle'} /> */}
+    <div className="grid hobby-grid lg:border-seperate w-full md:flex md:justify-center">
+      {hobbies.map(({ title, bsIcon }) => (
+        <HobbyItem title={title} bsIcon={bsIcon} />
+      ))}
     </div>
   );
 };

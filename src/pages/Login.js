@@ -97,6 +97,11 @@ function Login() {
                   onClick={renderProps.onClick}
                   className="bg-white text-black w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium  hover:bg-gray-100/95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white-100"
                 >
+                  <img
+                    src="https://img.icons8.com/color/48/000000/google-logo.png"
+                    alt="google"
+                    className="max-w-[1.25rem] mr-3"
+                  />
                   Sign In With Google
                 </button>
               )}
@@ -113,9 +118,14 @@ function Login() {
                   type="button"
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
-                  className="bg-facebook-color w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+                  className="bg-facebook-color w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 items-center"
                 >
-                  Sign in With Facebook
+                  <img
+                    src="https://img.icons8.com/color/48/000000/facebook.png"
+                    alt="facebook"
+                    className="max-w-[1.5rem] mr-3"
+                  />
+                  <span>Sign in With Facebook</span>
                 </button>
               )}
             />
