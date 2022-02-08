@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+  .hobby-grid {
+    @apply grid-cols-[repeat(auto-fill,minmax(90px,_1fr))];
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import HobbyItem from './HobbyItem';
+import './Hobby.css';
 
 const HobbyList = () => {
   const hobbies = [
@@ -17,7 +18,7 @@ const HobbyList = () => {
   return (
     <div className="grid hobby-grid lg:border-seperate w-full md:flex md:justify-center">
       {hobbies.map(({ title, bsIcon }) => (
-        <HobbyItem title={title} bsIcon={bsIcon} />
+        <HobbyItem key={title} title={title} bsIcon={bsIcon} />
       ))}
     </div>
   );

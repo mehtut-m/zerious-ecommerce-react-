@@ -9,7 +9,6 @@ import AuthContextProvider from './contexts/AuthContext';
 import CartContextProvider from './contexts/CartContext';
 
 import 'tw-elements';
-import 'flowbite';
 import OrderContextProvider from './contexts/OrderContext';
 
 ReactDOM.render(

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../api/product';
 import { formatThaiCurrency } from '../services/currencyService';
 
-import Counter from '../components/products/Counter';
+import Counter from '../components/Products/Counter';
 import Button from '../components/Button';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthContext';

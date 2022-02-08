@@ -22,7 +22,7 @@ const AuthContextProvider = ({ children }) => {
       type: 'LOGIN_SUCCESS',
       payload: { user },
     });
-    toast.success('You are good to go, Welcome!');
+    toast.success('You are good to go, Welcome!', { autoClose: 1300 });
   };
 
   const logOut = () => {
@@ -31,7 +31,7 @@ const AuthContextProvider = ({ children }) => {
       type: 'LOGOUT',
       payload: {},
     });
-    toast.info('You are logged out, See you later.');
+    toast.info('You are logged out, See you later.', { autoClose: 1500 });
     navigate('/', { replace: true });
   };
 

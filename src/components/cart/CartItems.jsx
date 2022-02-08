@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Counter from '../products/Counter';
+import Counter from '../Products/Counter';
 import { CartContext } from '../../contexts/CartContext';
 import { formatThaiCurrency } from '../../services/currencyService';
 import defaultImg from '../../assets/images/default-product-img.png';

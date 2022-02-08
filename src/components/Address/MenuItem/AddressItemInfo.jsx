@@ -2,19 +2,13 @@ import React from 'react';
 
 const AddressItem = ({ label, content }) => {
   return (
-    <div className="flex">
+    <div className="flex mb-2">
       <span
-        className={`mr-4 text-right flex-grow-1 hidden md:block min-w-max text-secondary-typography`}
+        className={`mr-4 text-right flex-grow-1 hidden w-40 md:block min-w-max text-secondary-typography`}
       >
-        {label}
+        {`${label} :`}
       </span>
-      <span
-        className={`flex-grow-[3]  ${
-          label === 'ชื่อ นามสกุล' && 'font-semibold'
-        }`}
-      >
-        {content}
-      </span>
+      <span className={`${label === 'Name' && 'font-medium'}`}>{content}</span>
     </div>
   );
 };

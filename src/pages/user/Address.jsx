@@ -3,6 +3,7 @@ import AddressContainer from '../../components/Address/MenuItem/AddressContainer
 import Button from '../../components/Button';
 import SectionHeader from '../../components/User/SectionHeader';
 import { AuthContext } from '../../contexts/AuthContext';
+import Modal from '../../layouts/Modal';
 
 function Address() {
   const {
@@ -21,6 +22,7 @@ function Address() {
         <Button text={'Add'} className={'max-w-fit ml-auto mt-4'} />
       </div>
       <AddressContainer />
+      <Modal />
     </main>
   );
 }

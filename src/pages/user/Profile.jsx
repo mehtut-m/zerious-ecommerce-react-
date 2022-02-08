@@ -29,7 +29,7 @@ const Profile = () => {
       />
 
       <form className="my-6 px-4 flex flex-col md:flex-row items-center md:justify-between">
-        <div className="min-w-max w-full md:max-w-[55%] grid grid-cols-2 gap-4">
+        <div className="min-w-max w-full md:max-w-[55%] grid  md:grid-cols-2 gap-4">
           <label className="text-secondary-typography">First Name :</label>
           <input
             type="text"
@@ -37,17 +37,19 @@ const Profile = () => {
             onChange={(e) => setFirstName(e.target.value)}
           />
 
-          <label className="text-gray-400">Last Name :</label>
+          <label className="text-secondary-typography">Last Name :</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
 
-          <label className="text-gray-400 mr-2">Email :</label>
+          <label className="text-secondary-typography mr-2 ">Email :</label>
           <p>{user?.email}</p>
 
-          <label className="text-gray-400 mr-2">Log In Method :</label>
+          <label className="text-secondary-typography mr-2">
+            Log In Method :
+          </label>
           <p>Google Account</p>
 
           <Button className={'w-max mt-6 px-6'} text={'Save'}></Button>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import HobbyWrapper from '../components/Navbar/HobbyWrapper';
-import ProductList from '../components/products/ProductList';
+import ProductList from '../components/Products/ProductList';
 
 function Home() {
   const [products, setProducts] = useState([]);

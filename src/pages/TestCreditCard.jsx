@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useScript from 'react-script-hook';
 import { OMISE_SCRIPT_URL, OMISE_PUBLIC_KEY } from '../config/env';
 
 let OmiseCard;
