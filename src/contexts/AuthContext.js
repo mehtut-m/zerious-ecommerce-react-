@@ -71,6 +71,7 @@ const AuthContextProvider = ({ children }) => {
 
   const signinWithFacebook = async (response) => {
     try {
+      console.log(response);
       const { accessToken } = response;
 
       const res = await axios.post('auth/login/fb', {

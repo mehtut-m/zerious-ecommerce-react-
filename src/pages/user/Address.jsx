@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import AddressContainer from '../../components/Address/MenuItem/AddressContainer';
+import EditAddressForm from '../../components/Address/Modal/EditAddressForm';
 import Button from '../../components/Button';
 import SectionHeader from '../../components/User/SectionHeader';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -10,6 +11,11 @@ function Address() {
     user: { address },
   } = useContext(AuthContext);
 
+  const [addressForm, setAddressFormOn] = useState(null);
+  const handleInputChange = (e) => {
+    setAddressFormOn((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <main className="container shadow-md mt-6 rounded-lg border">
       {/* Header */}
@@ -19,10 +25,28 @@ function Address() {
       />
       {/* Address Body */}
       <div>
-        <Button text={'Add'} className={'max-w-fit ml-auto mt-4'} />
+        <Button
+          text={'Add'}
+          className={'max-w-fit ml-auto mt-4'}
+          handleClick={() => {
+            setAddressFormOn({
+              name: '',
+              address: '',
+              telephoneNo: '',
+            });
+          }}
+        />
       </div>
       <AddressContainer />
-      <Modal />
+      {addressForm && (
+        <Modal>
+          <EditAddressForm
+            addressForm={addressForm}
+            closeModal={() => setAddressFormOn(null)}
+            handleInputChange={handleInputChange}
+          />
+        </Modal>
+      )}
     </main>
   );
 }

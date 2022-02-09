@@ -1,6 +1,6 @@
 const FormInput = ({ title, type, label, value, handleChange }) => {
   return (
-    <div className="w-full md:w-full px-3">
+    <div className="w-full md:w-full">
       <label
         className="block tracking-wide text-gray-700 text-xs font-bold mb-2"
         htmlFor={`form-${title}`}
