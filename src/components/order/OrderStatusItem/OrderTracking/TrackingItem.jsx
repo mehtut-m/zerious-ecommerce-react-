@@ -13,7 +13,7 @@ const TrackingItem = ({ item }) => {
 
   return (
     <div
-      className="grid mb-2"
+      className="flex flex-col sm:grid mb-2"
       style={{ gridTemplateColumns: '0.25fr 1fr 1fr 0.25fr' }}
     >
       <span className="col-start-2 col-span-1 text-right mr-8">

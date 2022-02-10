@@ -19,7 +19,11 @@ const MainMenu = ({ menuOn, handleCloseDrawer }) => {
         </button>
         <MenuHeader isAuth={isAuth} user={user} />
       </div>
-      <MenuContainer logOut={logOut} isAuth={isAuth} />
+      <MenuContainer
+        logOut={logOut}
+        isAuth={isAuth}
+        handleCloseDrawer={handleCloseDrawer}
+      />
     </Drawer>
   );
 };

@@ -5,6 +5,7 @@ import SectionHeader from '../../components/User/SectionHeader';
 
 const OrderStatusSummary = () => {
   const { orders, refreshOrder } = useContext(OrderContext);
+
   useEffect(() => {
     refreshOrder();
   }, []);
@@ -15,7 +16,6 @@ const OrderStatusSummary = () => {
         title="My Orders"
         subtitle="Keep track of your extremely cool purchase here."
       />
-
       {orders.length !== 0 ? (
         <OrderStatusList orders={orders} />
       ) : (

@@ -6,28 +6,28 @@ import signOut from '../../assets/icons/Logout.svg';
 
 import MenuItems from './MenuItems';
 
-const MenuContainer = ({ isAuth, logOut }) => {
+const MenuContainer = ({ isAuth, logOut, handleCloseDrawer }) => {
   return (
     <ul>
       {isAuth ? (
         <>
           {' '}
-          <MenuItems path="/user/profile">
+          <MenuItems path="/user/profile" handleCloseDrawer={handleCloseDrawer}>
             <img src={personal} alt="personal-info" />
             Personal Info
           </MenuItems>
-          <MenuItems path="/user/address">
+          <MenuItems path="/user/address" handleCloseDrawer={handleCloseDrawer}>
             <img src={address} alt="address" />
             Address
           </MenuItems>
-          <MenuItems>
+          <MenuItems handleCloseDrawer={handleCloseDrawer}>
             <img src={heart} alt="favorite-items" />
             Favorite Items
           </MenuItems>
-          <MenuItems path="/user/order">
+          <MenuItems path="/user/order" handleCloseDrawer={handleCloseDrawer}>
             <img src={order} alt="Previous Order" /> Previous Orders
           </MenuItems>
-          <MenuItems handleClick={logOut}>
+          <MenuItems handleClick={logOut} handleCloseDrawer={handleCloseDrawer}>
             <img src={signOut} alt="sign out" />
             Log Out
           </MenuItems>

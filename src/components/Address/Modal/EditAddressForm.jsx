@@ -1,16 +1,34 @@
-import { createAddress } from '../../../api/user';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { updateAddress } from '../../../api/user';
 import FormInput from '../../inputs/FormInput';
 
-const EditAddressForm = ({ closeModal, handleInputChange, addressForm }) => {
+const EditAddressForm = ({
+  closeModal,
+  handleInputChange,
+  addressForm,
+  action,
+}) => {
   const { name, telephoneNo, address } = addressForm;
+  const { createNewAddress, user } = useContext(AuthContext);
+  console.log(user);
   const handleFormChange = (e) => {
     handleInputChange(e);
   };
 
-  const handleSave = async () => {
+  const handleCreateAddress = async () => {
     try {
-      const res = await createAddress({ name, telephoneNo, address });
+      const res = await createNewAddress(name, telephoneNo, address);
       console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdateAddress = async () => {
+    try {
+      // const res = await createAddress({ name, telephoneNo, address });
+      // console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +62,13 @@ const EditAddressForm = ({ closeModal, handleInputChange, addressForm }) => {
       <div className="text-center md:text-right mt-4 md:flex md:justify-end">
         <button
           className="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2"
-          onClick={handleSave}
+          onClick={
+            action === 'CREATE'
+              ? handleCreateAddress
+              : action === 'EDIT'
+              ? handleUpdateAddress
+              : () => {}
+          }
         >
           Save
         </button>

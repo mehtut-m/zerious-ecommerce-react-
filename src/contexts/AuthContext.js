@@ -5,6 +5,7 @@ import axios from '../config/axios';
 import { clearToken, getToken, setToken } from '../services/localStorage';
 import { toast } from 'react-toastify';
 import authReducer from '../reducers/auth';
+import { createAddress } from '../api/user';
 
 const AuthContext = createContext();
 
@@ -71,7 +72,6 @@ const AuthContextProvider = ({ children }) => {
 
   const signinWithFacebook = async (response) => {
     try {
-      console.log(response);
       const { accessToken } = response;
 
       const res = await axios.post('auth/login/fb', {
@@ -110,6 +110,14 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const createNewAddress = async (name, telephoneNo, address) => {
+    const res = await createAddress({ name, telephoneNo, address });
+    dispatch({
+      type: 'CREATE_ADDRESS_SUCCESS',
+      payload: { address: res.data.address },
+    });
+  };
+
   useEffect(() => {
     //   Try to get token if token exist sign in user rightaway
     if (user.token) {
@@ -128,6 +136,7 @@ const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        createNewAddress,
         signinWithGoogle,
         signinWithFacebook,
         signinOrganic,

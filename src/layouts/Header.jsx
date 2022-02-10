@@ -6,7 +6,7 @@ const Header = (props) => {
     <>
       <header
         className={`${'header'} 
-      bg-transparent sticky top-0 w-full flex justify-center -z-0`}
+      bg-transparent sticky top-0 w-full flex justify-center z-[999]`}
       >
         <Navbar className={'sticky'} />
       </header>

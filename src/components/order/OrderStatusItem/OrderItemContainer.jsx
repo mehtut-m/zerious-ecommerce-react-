@@ -19,14 +19,14 @@ const OrderStatusItem = ({ order }) => {
   }, 0);
   const grandTotal = subTotal - discount;
 
-  useEffect(() => {}, []);
-
   return (
     <li className="order-status-item border pb-6 mb-3 rounded-xl overflow-hidden">
       <Link to={`${pathname}/${id}`}>
-        <div className="status-item-header flex justify-between p-6 bg-black text-white hover:text-primary">
+        <div className="status-item-header flex flex-col sm:flex-row sm:justify-between p-6 bg-black text-white hover:text-primary">
           <span className="font-semibold">Order No. {id}</span>
-          <span className="text-right">{ORDER_STATUS[status]}</span>
+          <span className="text-left mt-2 sm:mt-0 sm:text-right ">
+            {ORDER_STATUS[status]}
+          </span>
         </div>
         <div className="p-6">
           <ul className="status-item-preview">

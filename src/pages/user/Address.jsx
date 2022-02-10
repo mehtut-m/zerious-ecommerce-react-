@@ -7,10 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import Modal from '../../layouts/Modal';
 
 function Address() {
-  const {
-    user: { address },
-  } = useContext(AuthContext);
-
+  const { user, createNewAddress } = useContext(AuthContext);
   const [addressForm, setAddressFormOn] = useState(null);
   const handleInputChange = (e) => {
     setAddressFormOn((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -42,6 +39,7 @@ function Address() {
         <Modal>
           <EditAddressForm
             addressForm={addressForm}
+            action="CREATE"
             closeModal={() => setAddressFormOn(null)}
             handleInputChange={handleInputChange}
           />

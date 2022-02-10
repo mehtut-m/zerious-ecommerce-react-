@@ -6,6 +6,9 @@ const LOGOUT = 'LOGOUT';
 const LOADING = 'LOADING';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 const AUTH_FAIL = 'AUTH_FAIL';
+const CREATE_ADDRESS = 'CREATE_ADDRESS_SUCCESS';
+const UPDATE_ADDRESS = 'UPDATE_ADDRESS_SUCCESS';
+const DELETE_ADDRESS = 'DELETE_ADDRESS_SUCCESS';
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -15,10 +18,24 @@ const authReducer = (state, action) => {
       console.log(action.payload.user);
       return { ...state, user: action.payload.user, isAuth: true };
     }
+    case CREATE_ADDRESS: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          address: [...state.user.address, action.payload.address],
+        },
+      };
+    }
+    case UPDATE_ADDRESS: {
+      return state;
+    }
+    case DELETE_ADDRESS: {
+      return state;
+    }
     case LOADING: {
       return state;
     }
-
     case AUTH_FAIL: {
       return;
     }
