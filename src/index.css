@@ -51,7 +51,7 @@ html {
   }
   [type='checkbox'],
   [type='radio'] {
-    @apply border-gray-300 rounded text-indigo-600 focus:ring-indigo-500;
+    @apply border-gray-300 rounded text-primary focus:ring-primary;
   }
   ,
   [type='button'] {

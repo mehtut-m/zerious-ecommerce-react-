@@ -13,25 +13,34 @@ import Checkout from '../pages/Checkout';
 import OrderStatusSummary from '../pages/user/OrderStatusSummary';
 import Profile from '../pages/user/Profile';
 import Address from '../pages/user/Address';
+import Catalogue from '../pages/Catalogue';
 
 function RouteConfig() {
+  const [isLoading, setIsLoading] = useState(true);
   const {
     user: { isAuth },
   } = useContext(AuthContext);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, [isAuth]);
+
+  console.log('isLoading --->', isLoading);
+  console.log('isAuth --->', isAuth);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/test" element={<Test />} />
+      <Route path="/product/" element={<Catalogue />} />
       <Route path="/product/:id" element={<Product />} />
-
-      <Route path="/user/profile" element={<Profile />} />
-      <Route path="/user/address" element={<Address />} />
-      <Route path="/user/order" element={<OrderStatusSummary />} />
-      <Route path="/user/order/:id" element={<OrderStatusDetail />} />
-      <Route path="/checkout" element={<Checkout />} />
-      {isAuth ? (
-        <></>
+      {!isLoading && isAuth ? (
+        <>
+          <Route path="/test" element={<Test />} />
+          <Route path="/user/profile" element={<Profile />} />
+          <Route path="/user/address" element={<Address />} />
+          <Route path="/user/order" element={<OrderStatusSummary />} />
+          <Route path="/user/order/:id" element={<OrderStatusDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </>
       ) : (
         <>
           <Route path="/login" element={<Login />} />

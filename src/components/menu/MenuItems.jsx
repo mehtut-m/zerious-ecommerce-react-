@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 
-const MenuItems = ({ children, handleClick, path, handleCloseDrawer }) => {
+const MenuItems = ({
+  children,
+  handleClick,
+  path,
+  handleCloseDrawer = () => {},
+}) => {
   return (
     <Link to={path || '/'}>
       <li

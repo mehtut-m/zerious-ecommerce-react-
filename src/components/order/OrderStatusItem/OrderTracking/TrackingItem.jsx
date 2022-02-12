@@ -16,10 +16,10 @@ const TrackingItem = ({ item }) => {
       className="flex flex-col sm:grid mb-2"
       style={{ gridTemplateColumns: '0.25fr 1fr 1fr 0.25fr' }}
     >
-      <span className="col-start-2 col-span-1 text-right mr-8">
+      <span className="col-start-2 col-span-1 text-center sm:text-right sm:mr-8">
         {status_date}
       </span>
-      <div className="ml-10">
+      <div className="ml-10 text-center sm:text-left">
         <span className="font-semibold">{status_description}</span>
         {orderComplete && (
           <>

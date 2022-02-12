@@ -33,7 +33,7 @@ const OrderStatusItem = ({ order }) => {
             <OrderSummaryList cartItems={orderItem} />
           </ul>
           <div className="status-item-footer pt-3">
-            <p className="text-right ml-auto block">
+            <p className="text-right mt-2 ml-auto block">
               <span className="mr-2 font-semibold">Total</span>
               {formatThaiCurrency(grandTotal)}
             </p>

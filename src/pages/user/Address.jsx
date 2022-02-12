@@ -4,6 +4,7 @@ import EditAddressForm from '../../components/Address/Modal/EditAddressForm';
 import Button from '../../components/Button';
 import SectionHeader from '../../components/User/SectionHeader';
 import { AuthContext } from '../../contexts/AuthContext';
+import Container from '../../layouts/Container';
 import Modal from '../../layouts/Modal';
 
 function Address() {
@@ -14,7 +15,7 @@ function Address() {
   };
 
   return (
-    <main className="container shadow-md mt-6 rounded-lg border">
+    <Container>
       {/* Header */}
       <SectionHeader
         title="Address"
@@ -45,7 +46,7 @@ function Address() {
           />
         </Modal>
       )}
-    </main>
+    </Container>
   );
 }
 

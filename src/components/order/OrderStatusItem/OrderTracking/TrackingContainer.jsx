@@ -61,7 +61,7 @@ const TrackingContainer = () => {
   return (
     <div className="tracking-progression w-full p-4 flex flex-col items-center">
       <h6 className="font-semibold mb-4">Progression</h6>
-      <div className="w-full">
+      <div className="w-full p-3">
         {[...post.response.items[trackingNo]].reverse().map((item) => (
           <TrackingItem key={item.status} item={item} />
         ))}

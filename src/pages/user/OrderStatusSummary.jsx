@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { OrderContext } from '../../contexts/OrderContext';
 import OrderStatusList from '../../components/order/OrderStatusList';
 import SectionHeader from '../../components/User/SectionHeader';
+import Container from '../../layouts/Container';
 
 const OrderStatusSummary = () => {
   const { orders, refreshOrder } = useContext(OrderContext);
@@ -11,7 +12,7 @@ const OrderStatusSummary = () => {
   }, []);
 
   return (
-    <main className="container shadow-md mt-6 border rounded-lg">
+    <Container>
       <SectionHeader
         title="My Orders"
         subtitle="Keep track of your extremely cool purchase here."
@@ -25,7 +26,7 @@ const OrderStatusSummary = () => {
           </h3>
         </div>
       )}
-    </main>
+    </Container>
   );
 };
 

@@ -4,6 +4,7 @@ import SectionHeader from '../../components/User/SectionHeader';
 
 import defaultProfile from '../../assets/images/default-profile.png';
 import { AuthContext } from '../../contexts/AuthContext';
+import Container from '../../layouts/Container';
 
 const Profile = () => {
   const {
@@ -22,7 +23,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <main className="container shadow-md mt-6 rounded-lg border">
+    <Container>
       <SectionHeader
         title="My Profile"
         subtitle="Manage your account and user profile info"
@@ -83,7 +84,7 @@ const Profile = () => {
           text={'Save'}
         />
       </div>
-    </main>
+    </Container>
   );
 };
 
