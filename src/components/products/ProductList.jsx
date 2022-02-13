@@ -13,10 +13,16 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div>
-      {products.map((item) => (
+    <div className="grid grid-cols-3 justify-items-center">
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      <ProductItem />
+      {/* {products.map((item) => (
         <ProductItem key={item.id} product={item} />
-      ))}
+      ))} */}
     </div>
   );
 };
