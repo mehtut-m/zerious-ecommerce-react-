@@ -1,28 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
-import { getAllProduct } from '../../api/product';
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  // Fetch product on load
-  useEffect(() => {
-    getAllProduct()
-      .then((res) => setProducts([...res.data.products]))
-      .catch((err) => console.log(err));
-  }, []);
-
+const ProductList = ({ products }) => {
   return (
-    <div className="grid grid-cols-3 justify-items-center">
-      <ProductItem />
-      <ProductItem />
-      <ProductItem />
-      <ProductItem />
-      <ProductItem />
-      <ProductItem />
-      {/* {products.map((item) => (
+    <div className="grid grid-cols-3 justify-items-center gap-y-4">
+      {products.map((item) => (
         <ProductItem key={item.id} product={item} />
-      ))} */}
+      ))}
     </div>
   );
 };

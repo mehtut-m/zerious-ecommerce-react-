@@ -21,6 +21,8 @@ const Product = () => {
   const [itemCount, setItemCount] = useState(1);
   const navigate = useNavigate();
 
+  console.log(product);
+
   useEffect(() => {
     getProductById(id)
       .then((res) => {
@@ -74,7 +76,11 @@ const Product = () => {
         <div className="product-img-container w-full md:max-w-md">
           <img
             className="product-img mb-10 w-full"
-            src={product?.productImg || defaultImg}
+            src={
+              product?.productImg.length > 0
+                ? product.productImg[0].productImg
+                : defaultImg
+            }
             alt={product?.name}
           />
         </div>

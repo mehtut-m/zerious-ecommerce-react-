@@ -1,12 +1,29 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import FilterItem from '../components/Catalogue/FilterItem';
 import ProductList from '../components/Products/ProductList';
+import { getAllProduct } from '../api/product';
 
 const Catalogue = () => {
+  const [products, setProducts] = useState([]);
+  const brand = products
+    .map((item, index, array) => {
+      return item.brand;
+    })
+    .filter(
+      (item, index, array) =>
+        array.findIndex((ele, index) => ele.id === item.id) === index
+    );
+  console.log(brand);
+  const filteredProduct = products;
+
+  // Fetch product on load
   useEffect(() => {
-    //   Get Brand
+    getAllProduct()
+      .then((res) => setProducts([...res.data.products]))
+      .catch((err) => console.log(err));
   }, []);
+
   return (
     <div className="container flex justify-center items-center">
       <div
@@ -32,21 +49,9 @@ const Catalogue = () => {
             <div className="py-2 ">
               <h3 className="font-semibold mb-4">Brand</h3>
               <div className="max-h-56 overflow-scroll">
-                <FilterItem label="฿ 0 - 3,000" name value />
-                <FilterItem label="฿ 3,000 - 5,000" name value />
-                <FilterItem label="฿ 5,000 - 10,000" name value />
-                <FilterItem label="฿ 10,000 - 15,000" name value />
-                <FilterItem label="฿ 15,000 - Above" name value />
-                <FilterItem label="฿ 0 - 3,000" name value />
-                <FilterItem label="฿ 3,000 - 5,000" name value />
-                <FilterItem label="฿ 5,000 - 10,000" name value />
-                <FilterItem label="฿ 10,000 - 15,000" name value />
-                <FilterItem label="฿ 15,000 - Above" name value />
-                <FilterItem label="฿ 0 - 3,000" name value />
-                <FilterItem label="฿ 3,000 - 5,000" name value />
-                <FilterItem label="฿ 5,000 - 10,000" name value />
-                <FilterItem label="฿ 10,000 - 15,000" name value />
-                <FilterItem label="฿ 15,000 - Above" name value />
+                {brand.map((el) => (
+                  <FilterItem label={el.name} />
+                ))}
               </div>
             </div>
 
@@ -61,7 +66,7 @@ const Catalogue = () => {
           </div>
         </aside>
         <div style={{ gridArea: 'main' }}>
-          <ProductList />
+          <ProductList products={products} />
         </div>
       </div>
     </div>

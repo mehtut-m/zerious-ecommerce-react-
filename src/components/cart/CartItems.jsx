@@ -40,7 +40,7 @@ const CartItems = ({ cartItem }) => {
   return (
     <div className="flex mb-4 gap-4 ">
       <img
-        src={productImg || defaultImg}
+        src={productImg.length > 0 ? productImg[0].productImg : defaultImg}
         alt={productName}
         className="w-24 h-24 object-cover "
       />

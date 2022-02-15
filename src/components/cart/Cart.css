@@ -7,5 +7,6 @@
 }
 
 .drawer-off {
-  right: -100%;
+  /* right: -100%; */
+  transform: translateX(100%);
 }

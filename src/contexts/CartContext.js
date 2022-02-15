@@ -23,6 +23,7 @@ const CartContextProvider = ({ children }) => {
     if (user) {
       getMyCart(user.id)
         .then((res) => {
+          console.log('hi', res);
           dispatch({
             type: 'LOAD_CART_ITEM',
             payload: res.data.order,
