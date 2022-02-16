@@ -3,8 +3,8 @@ import RegisterForm from '../components/RegisterForm';
 
 function Register() {
   return (
-    <main className="container w-full">
-      <div className="ml-2">
+    <main className="container w-full my-5">
+      <div className="ml-2 ">
         <h1 className="text-3xl font-semibold mb-3">Create Account</h1>
         <p className="mb-4">Be a part of our Zerious community.</p>
       </div>

@@ -62,7 +62,7 @@ const RegisterForm = () => {
     for (let key in registerData) {
       user[key] = registerData[key].trim();
     }
-    const res = await register({ ...user });
+    await register({ ...user });
   };
 
   return (

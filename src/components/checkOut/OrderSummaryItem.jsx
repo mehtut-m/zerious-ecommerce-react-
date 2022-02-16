@@ -10,7 +10,7 @@ const OrderSummaryItem = ({ orderItem }) => {
       <div className="order-item-img-container h-16 w-16 md:h-24 md:w-24">
         <img
           src={
-            product.productImg.length > 0
+            product?.productImg?.length > 0
               ? product.productImg[0].productImg
               : defaultImg
           }

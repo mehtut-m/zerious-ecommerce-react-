@@ -6,6 +6,9 @@ import { getAllProduct } from '../api/product';
 
 const Catalogue = () => {
   const [products, setProducts] = useState([]);
+
+  const [filterByBrand, setFilterByBrand] = useState([]);
+
   const brand = products
     .map((item, index, array) => {
       return item.brand;
@@ -14,8 +17,12 @@ const Catalogue = () => {
       (item, index, array) =>
         array.findIndex((ele, index) => ele.id === item.id) === index
     );
-  console.log(brand);
-  const filteredProduct = products;
+
+  const filteredProduct = products.filter((item) => {
+    return (
+      filterByBrand.length === 0 || filterByBrand.includes(String(item.brandId))
+    );
+  });
 
   // Fetch product on load
   useEffect(() => {
@@ -46,17 +53,22 @@ const Catalogue = () => {
           </div>
           {/* Filter Body */}
           <div className="p-2">
-            <div className="py-2 ">
-              <h3 className="font-semibold mb-4">Brand</h3>
+            <div className="py-2">
+              <h3 className="font-semibold pb-1 border-b">Brand</h3>
               <div className="max-h-56 overflow-scroll">
                 {brand.map((el) => (
-                  <FilterItem label={el.name} />
+                  <FilterItem
+                    key={el.id}
+                    label={el.name}
+                    value={el.id}
+                    setFilterByBrand={setFilterByBrand}
+                  />
                 ))}
               </div>
             </div>
 
             <div className="py-2">
-              <h3 className="font-semibold mb-4">Price Range</h3>
+              <h3 className="font-semibold pb-1 mb-3 border-b">Price Range</h3>
               <FilterItem label="฿ 0 - 3,000" name value />
               <FilterItem label="฿ 3,000 - 5,000" name value />
               <FilterItem label="฿ 5,000 - 10,000" name value />
@@ -66,7 +78,7 @@ const Catalogue = () => {
           </div>
         </aside>
         <div style={{ gridArea: 'main' }}>
-          <ProductList products={products} />
+          <ProductList products={filteredProduct} />
         </div>
       </div>
     </div>

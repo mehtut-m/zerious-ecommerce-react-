@@ -1,4 +1,5 @@
 import defaultImg from '../assets/images/default-product-img.png';
+import { Link } from 'react-router-dom';
 import React, { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { getProductById } from '../api/product';
 import { formatThaiCurrency } from '../services/currencyService';
 
 import Counter from '../components/Products/Counter';
+import BreadCrumb from '../components/BreadCrumb';
 import Button from '../components/Button';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthContext';
@@ -71,7 +73,18 @@ const Product = () => {
   };
 
   return (
-    <main className="container m-auto">
+    <main className="container mx-auto">
+      <BreadCrumb>
+        <li className="breadcrumb-item text-gray-400 after:content-['>'] mr-1">
+          <Link to="">{product?.category.hobby.name}</Link>
+        </li>
+        <li className="breadcrumb-item text-gray-400 after:content-['>']">
+          <Link to={`/product/${id}`}>{product?.category.name}</Link>
+        </li>
+        <li className="breadcrumb-item text-black">
+          <Link to={`/product/${id}`}>{product?.name}</Link>
+        </li>
+      </BreadCrumb>
       <div className="product-info flex flex-wrap justify-between w-full container">
         <div className="product-img-container w-full md:max-w-md">
           <img
