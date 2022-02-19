@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext';
 import CartContextProvider from './contexts/CartContext';
-
-import 'tw-elements';
 import OrderContextProvider from './contexts/OrderContext';
+import 'tw-elements';
 
 ReactDOM.render(
   <React.StrictMode>

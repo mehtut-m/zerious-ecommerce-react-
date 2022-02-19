@@ -16,8 +16,12 @@ const ProductItem = ({ product }) => {
         />
 
         <div className="card-body mt-2">
-          <h6 className="mb-2 font-thin line-clamp-2">{name}</h6>
-          <p className="text-lg font-medium">{formatThaiCurrency(price)}</p>
+          <h6 className="mb-2 font-thin line-clamp-2">
+            {name || 'Dummy Product'}
+          </h6>
+          <p className="text-lg font-medium">
+            {formatThaiCurrency(price) || 'Dummy Price'}
+          </p>
         </div>
       </Link>
     </div>

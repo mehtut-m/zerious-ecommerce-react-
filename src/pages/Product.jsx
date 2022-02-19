@@ -23,11 +23,10 @@ const Product = () => {
   const [itemCount, setItemCount] = useState(1);
   const navigate = useNavigate();
 
-  console.log(product);
-
   useEffect(() => {
     getProductById(id)
       .then((res) => {
+        console.log(res.data.product);
         setProduct(res.data.product);
       })
       .catch((err) => console.log(err));
@@ -85,6 +84,7 @@ const Product = () => {
           <Link to={`/product/${id}`}>{product?.name}</Link>
         </li>
       </BreadCrumb>
+
       <div className="product-info flex flex-wrap justify-between w-full container">
         <div className="product-img-container w-full md:max-w-md">
           <img

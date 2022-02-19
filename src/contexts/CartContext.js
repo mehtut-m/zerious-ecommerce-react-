@@ -50,6 +50,7 @@ const CartContextProvider = ({ children }) => {
 
     try {
       const res = await updateCart(productId, amount);
+      console.log(res.data);
       if (res.status === 200) {
         dispatch({
           type: 'UPDATE_CART_ITEM',
