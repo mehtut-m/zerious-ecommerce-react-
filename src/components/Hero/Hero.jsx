@@ -3,7 +3,7 @@ import Carousel from '../Carousel';
 
 const Hero = () => {
   return (
-    <div className="m-auto container">
+    <div className="m-auto container" style={{ padding: 0 }}>
       <Carousel
         settings={{
           dots: true,
@@ -11,6 +11,8 @@ const Hero = () => {
           speed: 1000,
           slidesToShow: 1,
           slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 4000,
         }}
       >
         <Link to="/">

@@ -85,7 +85,8 @@ const Product = () => {
         </li>
       </BreadCrumb>
 
-      <div className="product-info flex flex-wrap justify-between w-full container">
+      <div className="product-info flex flex-wrap justify-around w-full container">
+        {/* Product container */}
         <div className="product-img-container w-full md:max-w-md">
           <img
             className="product-img mb-10 w-full"
@@ -97,18 +98,18 @@ const Product = () => {
             alt={product?.name}
           />
         </div>
+        {/* Product Info */}
+        <div className="product-content-container flex flex-col gap-4 max-w-lg w-[512px]">
+          <h2 className="product-description text-3xl font-meduim w-full">
+            {product?.name}
+          </h2>
 
-        <div className="product-content-container flex flex-col gap-4 max-w-md">
-          <div>
-            <h2 className="product-description text-2xl font-semibold">
-              {product?.name}
-            </h2>
-            <p className="product-description">
-              {formatThaiCurrency(product?.price)}
-            </p>
-          </div>
-          <p className="product-description">{product?.description}</p>
-
+          <p className="product-description mb-4 w-full">
+            {product?.description}
+          </p>
+          <p className="product-description font-light text-3xl mb-5">
+            {formatThaiCurrency(product?.price)}
+          </p>
           <Counter
             itemCount={itemCount}
             handleClick={{ addCount, removeCount, updateCount }}

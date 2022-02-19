@@ -4,7 +4,7 @@ import './Hobby.css';
 
 const HobbyList = () => {
   const hobbies = [
-    { title: 'All Hobbies', bsIcon: 'bi-pc-display', path: '/' },
+    { title: 'All Hobbies', bsIcon: 'bi-pc-display', path: '/product/' },
     {
       title: 'Desktop Gaming',
       bsIcon: 'bi-pc-display',

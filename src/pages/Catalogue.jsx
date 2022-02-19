@@ -27,14 +27,16 @@ const Catalogue = () => {
   // Fetch product on load
   useEffect(() => {
     getAllProduct()
-      .then((res) => setProducts([...res.data.products]))
+      .then((res) => {
+        setProducts([...res.data.products]);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="container flex justify-center items-center">
       <div
-        className="grid bg-slate-100 w-full p-3"
+        className="grid rounded header w-full p-3"
         style={{
           gridTemplateAreas: `
                     'sidebar main main'
