@@ -4,6 +4,7 @@ import Hero from '../components/Hero/Hero';
 import HobbyWrapper from '../components/Navbar/HobbyWrapper';
 import ProductItem from '../components/Products/ProductItem';
 import ProductList from '../components/Products/ProductList';
+import NewItemList from '../components/Products/NewItemList';
 import TrendingList from '../components/Products/TrendingList';
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
       <HobbyWrapper />
       {/* Top trending */}
       <TrendingList />
+      <NewItemList />
       {/* <ProductList /> */}
     </main>
   );

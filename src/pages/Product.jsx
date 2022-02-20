@@ -74,10 +74,12 @@ const Product = () => {
   return (
     <main className="container mx-auto">
       <BreadCrumb>
-        <li className="breadcrumb-item text-gray-400 after:content-['>'] mr-1">
-          <Link to="">{product?.category.hobby.name}</Link>
+        <li className="breadcrumb-item text-gray-400 after:content-['>'] after:ml-1 mr-1">
+          <Link to={`/product/category/${product?.category.hobby.id}`}>
+            {product?.category.hobby.name}
+          </Link>
         </li>
-        <li className="breadcrumb-item text-gray-400 after:content-['>']">
+        <li className="breadcrumb-item text-gray-400  after:content-['>'] after:ml-1 mr-1">
           <Link to={`/product/${id}`}>{product?.category.name}</Link>
         </li>
         <li className="breadcrumb-item text-black">

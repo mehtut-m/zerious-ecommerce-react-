@@ -39,15 +39,15 @@ const Catalogue = () => {
         className="grid rounded header w-full p-3"
         style={{
           gridTemplateAreas: `
-                    'sidebar main main'
-                    'sidebar main main'
-                    'sidebar main main'
+                    'sidebar main main main'
+                    'sidebar main main main'
+                    'sidebar main main main'
                 `,
         }}
       >
         <aside
           style={{ gridArea: 'sidebar' }}
-          className="bg-slate-50 p-3 rounded-md"
+          className="bg-slate-50 p-3 rounded-md max-w-xs"
         >
           {/* Filter Heading */}
           <div>
@@ -79,7 +79,7 @@ const Catalogue = () => {
             </div>
           </div>
         </aside>
-        <div style={{ gridArea: 'main' }}>
+        <div className="p-2" style={{ gridArea: 'main' }}>
           <ProductList products={filteredProduct} />
         </div>
       </div>
