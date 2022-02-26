@@ -14,8 +14,14 @@ import OrderStatusSummary from '../pages/user/OrderStatusSummary';
 import Profile from '../pages/user/Profile';
 import Address from '../pages/user/Address';
 import Catalogue from '../pages/Catalogue';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import InitialTransition from '../components/InitialTransition';
 
 function RouteConfig() {
+  const location = useLocation();
+
   const [isLoading, setIsLoading] = useState(true);
   const {
     user: { isAuth },
@@ -25,31 +31,31 @@ function RouteConfig() {
     setIsLoading(false);
   }, [isAuth]);
 
-  console.log('isLoading --->', isLoading);
-  console.log('isAuth --->', isAuth);
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product/" element={<Catalogue />} />
-      <Route path="/product/:id" element={<Product />} />
-      {!isLoading && isAuth ? (
-        <>
-          <Route path="/test" element={<Test />} />
-          <Route path="/user/profile" element={<Profile />} />
-          <Route path="/user/address" element={<Address />} />
-          <Route path="/user/order" element={<OrderStatusSummary />} />
-          <Route path="/user/order/:id" element={<OrderStatusDetail />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </>
-      ) : (
-        <>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </>
-      )}
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/" element={<Catalogue />} />
+        <Route path="/product/:id" element={<Product />} />
+        {!isLoading && isAuth ? (
+          <>
+            <Route path="/test" element={<Test />} />
+            <Route path="/user/profile" element={<Profile />} />
+            <Route path="/user/address" element={<Address />} />
+            <Route path="/user/order" element={<OrderStatusSummary />} />
+            <Route path="/user/order/:id" element={<OrderStatusDetail />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </>
+        )}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 

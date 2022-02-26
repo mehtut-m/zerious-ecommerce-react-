@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import MainLayout from './layouts/MainLayout';
 
 import Footer from './layouts/Footer';
+import InitialTransition from './components/InitialTransition';
 
 function App() {
   useEffect(() => {
@@ -13,14 +14,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App relative">
-      <Header />
-      <MainLayout>
-        <RouteConfig />
-        <ToastContainer theme="dark" />
-      </MainLayout>
-      <Footer />
-    </div>
+    <>
+      <div className="App relative">
+        <InitialTransition />
+        <Header />
+        <MainLayout>
+          <RouteConfig />
+          <ToastContainer theme="dark" />
+        </MainLayout>
+        <Footer />
+      </div>
+    </>
   );
 }
 

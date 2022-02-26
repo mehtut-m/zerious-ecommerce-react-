@@ -5,7 +5,7 @@ import { CartContext } from '../contexts/CartContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../api/product';
 import { formatThaiCurrency } from '../services/currencyService';
-
+import { motion } from 'framer-motion';
 import Counter from '../components/Products/Counter';
 import BreadCrumb from '../components/BreadCrumb';
 import Button from '../components/Button';
@@ -72,7 +72,7 @@ const Product = () => {
   };
 
   return (
-    <main className="container mx-auto">
+    <motion.main exit={{ opacity: 0 }} className="container mx-auto">
       <BreadCrumb>
         <li className="breadcrumb-item text-gray-400 after:content-['>'] after:ml-1 mr-1">
           <Link to={`/product/category/${product?.category.hobby.id}`}>
@@ -123,7 +123,7 @@ const Product = () => {
           />
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 };
 
