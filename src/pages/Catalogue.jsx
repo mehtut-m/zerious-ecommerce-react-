@@ -3,9 +3,18 @@ import { useEffect, useState } from 'react';
 import FilterItem from '../components/Catalogue/FilterItem';
 import ProductList from '../components/Products/ProductList';
 import { getAllProduct } from '../api/product';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+const initialFilter = {
+  brand: [],
+  price: { min: 0, max: '' },
+};
 
 const Catalogue = () => {
   const [products, setProducts] = useState([]);
+
+  const [filter, setFilter] = useState(initialFilter);
 
   const [filterByBrand, setFilterByBrand] = useState([]);
 
@@ -18,11 +27,11 @@ const Catalogue = () => {
         array.findIndex((ele, index) => ele.id === item.id) === index
     );
 
-  const filteredProduct = products.filter((item) => {
-    return (
-      filterByBrand.length === 0 || filterByBrand.includes(String(item.brandId))
-    );
-  });
+  // const filteredProduct = products.filter((item) => {
+  //   return (
+  //     filterByBrand.length === 0 || filterByBrand.includes(String(item.brandId))
+  //   );
+  // });
 
   // Fetch product on load
   useEffect(() => {
@@ -63,7 +72,9 @@ const Catalogue = () => {
                     key={el.id}
                     label={el.name}
                     value={el.id}
+                    filter={filter}
                     setFilterByBrand={setFilterByBrand}
+                    setFilter={setFilter}
                   />
                 ))}
               </div>
@@ -71,16 +82,27 @@ const Catalogue = () => {
 
             <div className="py-2">
               <h3 className="font-semibold pb-1 mb-3 border-b">Price Range</h3>
-              <FilterItem label="฿ 0 - 3,000" name value />
-              <FilterItem label="฿ 3,000 - 5,000" name value />
-              <FilterItem label="฿ 5,000 - 10,000" name value />
-              <FilterItem label="฿ 10,000 - 15,000" name value />
-              <FilterItem label="฿ 15,000 - Above" name value />
+              {/* <label>From :</label>
+              <input
+                type="number"
+                min="0"
+                onChange={(e) =>
+                  setFilter({ ...filter, min: Number(e.target.value) })
+                }
+              />
+              <label>To :</label>
+              <input
+                type="number"
+                min={filter.min}
+                onChange={(e) =>
+                  setFilter({ ...filter, max: Number(e.target.value) })
+                }
+              /> */}
             </div>
           </div>
         </aside>
         <div className="p-2" style={{ gridArea: 'main' }}>
-          <ProductList products={filteredProduct} />
+          <ProductList products={products} />
         </div>
       </div>
     </div>

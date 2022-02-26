@@ -15,4 +15,12 @@ const getProductById = async (productId) => {
   }
 };
 
-export { getAllProduct, getProductById };
+const getTrendingProduct = async () => {
+  try {
+    return await axios.get(`/product/trending`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getAllProduct, getProductById, getTrendingProduct };

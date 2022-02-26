@@ -1,8 +1,18 @@
 import Carousel from '../Carousel';
+import { useEffect, useState } from 'react';
 import './Product.css';
 import ProductItem from '../Products/ProductItem';
+import { getTrendingProduct } from '../../api/product';
 
 function TrendingList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getTrendingProduct()
+      .then((res) => setProducts(res.data.trendingProduct))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     // <div>
     <div className="container m-auto bg-black rounded py-4">
@@ -46,27 +56,9 @@ function TrendingList() {
             ],
           }}
         >
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
-          <div>
-            <ProductItem product={{ id: '1', name: 'temp', productImg: [] }} />
-          </div>
+          {products.map((item) => (
+            <ProductItem product={item} key={item.id} />
+          ))}
         </Carousel>
       </div>
     </div>
