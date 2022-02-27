@@ -1,28 +1,25 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getAllProduct } from '../../api/product';
+import { useParams } from 'react-router-dom';
+import { getProductByCategory } from '../../api/product';
 import HobbyHeader from '../../components/Products/HobbyHeader';
 import Catalogue from '../Catalogue';
 
-const AllProduct = () => {
+const ProductByHobby = () => {
   const [products, setProducts] = useState([]);
-
+  const { categoryId } = useParams();
+  //   const activeHobby = hobbies.find((el) => el.id === categoryId);
   useEffect(() => {
-    getAllProduct()
-      .then((res) => {
-        setProducts([...res.data.products]);
-      })
+    getProductByCategory(categoryId)
+      .then((res) => setProducts(res.data.product))
       .catch((err) => console.log(err));
-  }, []);
+  }, [categoryId]);
 
   return (
     <main className="container flex flex-col justify-center items-center p-4 header rounded-lg my-10">
-      <HobbyHeader
-        item={{ name: 'All Items', description: 'Browse all the great stuff.' }}
-      />
       <Catalogue products={products} />
     </main>
   );
 };
 
-export default AllProduct;
+export default ProductByHobby;

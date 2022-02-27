@@ -16,6 +16,7 @@ import Address from '../pages/user/Address';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import ProductByHobby from '../pages/product/ProductByHobby';
+import ProductByCategory from '../pages/product/ProductByCategory';
 import AllProduct from '../pages/product/AllProduct';
 
 function RouteConfig() {
@@ -36,6 +37,7 @@ function RouteConfig() {
           <Route path="/" element={<Home />} />
           <Route path="/product/" element={<AllProduct />} />
           <Route path="/hobby/:hobbyId" element={<ProductByHobby />} />
+          <Route path="/category/:categoryId" element={<ProductByCategory />} />
           <Route path="/product/:id" element={<Product />} />
           {!isLoading && isAuth ? (
             <>

@@ -60,26 +60,15 @@ const Catalogue = ({ products }) => {
     <motion.div
       exit={{ opacity: 0 }}
       className="container flex justify-center items-center"
+      style={{ padding: 0 }}
     >
       <div
         className="grid rounded header w-full p-3"
         style={{
-          // gridTemplateAreas: `
-          //           'sidebar main main main'
-          //           'sidebar main main main'
-          //           'sidebar main main main'
-          //       `,
           gridTemplateColumns: 'minmax( 320px ,1fr) 4fr',
         }}
       >
-        <aside
-          style={
-            {
-              //  gridArea: 'sidebar'
-            }
-          }
-          className="bg-slate-50 p-3 rounded-md max-w-xs"
-        >
+        <aside className="bg-slate-50 p-3 rounded-md max-w-xs">
           {/* Filter Heading */}
           <div>
             <h3 className="p-2 font-semibold">Filter Option</h3>

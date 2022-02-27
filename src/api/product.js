@@ -9,6 +9,14 @@ const getAllProduct = async (category) => {
   }
 };
 
+const getProductByCategory = async (categoryId) => {
+  try {
+    return await axios.get(`/product/category/${categoryId}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const getProductByHobby = async (hobbyId) => {
   try {
     return await axios.get(`/product/hobby/${hobbyId}`);
@@ -16,6 +24,7 @@ const getProductByHobby = async (hobbyId) => {
     console.log(err);
   }
 };
+
 const getProductById = async (productId) => {
   try {
     return await axios.get(`/product/${productId}`);
@@ -32,4 +41,10 @@ const getTrendingProduct = async () => {
   }
 };
 
-export { getAllProduct, getProductById, getProductByHobby, getTrendingProduct };
+export {
+  getAllProduct,
+  getProductById,
+  getProductByHobby,
+  getProductByCategory,
+  getTrendingProduct,
+};

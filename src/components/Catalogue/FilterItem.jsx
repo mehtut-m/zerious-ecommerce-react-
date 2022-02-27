@@ -7,7 +7,7 @@ const FilterItem = ({
   setFilter,
 }) => {
   return (
-    <div className="filter-item py-2">
+    <div className="filter-item py-2 pl-1">
       <input
         type="checkbox"
         name="price"

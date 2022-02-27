@@ -14,8 +14,7 @@ function TrendingList() {
   }, []);
 
   return (
-    // <div>
-    <div className="container m-auto bg-black rounded py-4">
+    <div className="container m-auto bg-black rounded-md py-4 mt-16">
       <h2 className="flex font-medium text-primary text-xl">
         Top Selling Product
       </h2>
@@ -62,7 +61,6 @@ function TrendingList() {
         </Carousel>
       </div>
     </div>
-    // </div>
   );
 }
 

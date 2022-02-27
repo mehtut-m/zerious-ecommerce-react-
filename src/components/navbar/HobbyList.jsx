@@ -6,25 +6,53 @@ const HobbyList = () => {
   const hobbies = [
     { title: 'All Hobbies', bsIcon: 'bi-pc-display', path: '/product/' },
     {
+      id: '1',
       title: 'Desktop Gaming',
       bsIcon: 'bi-pc-display',
-      path: '/desktop-gaming',
+      path: '/hobby/1',
     },
     {
+      id: '2',
       title: 'Desk Decorating',
       bsIcon: 'bi-keyboard',
-      path: '/desk-decorating',
+      path: '/hobby/2',
     },
     {
+      id: '7',
       title: 'Console Gaming',
       bsIcon: 'bi-controller',
-      path: '/console-gaming',
+      path: '/hobby/7',
     },
-    { title: 'Entertainment', bsIcon: 'bi-film', path: '/entertainment' },
-    { title: 'Collectible', bsIcon: 'bi-puzzle', path: '/collectible' },
-    { title: 'Gadgets', bsIcon: 'bi-smartwatch', path: '/gadgets' },
-    { title: 'Photography', bsIcon: 'bi-camera', path: '/photography' },
-    { title: 'Work Out', bsIcon: 'bi-bicycle', path: '/work-out' },
+    {
+      id: '4',
+      title: 'Entertainment',
+      bsIcon: 'bi-film',
+      path: '/hobby/4',
+    },
+    {
+      id: '5',
+      title: 'Collectible',
+      bsIcon: 'bi-puzzle',
+      path: '/hobby/5',
+    },
+    {
+      id: '3',
+      title: 'Gadgets',
+      bsIcon: 'bi-smartwatch',
+      path: '/hobby/3',
+    },
+    {
+      id: '8',
+      title: 'Photography',
+      bsIcon: 'bi-camera',
+      path: '/hobby/8',
+    },
+    {
+      id: '9',
+      title: 'Work Out',
+      bsIcon: 'bi-bicycle',
+      path: '/hobby/9',
+    },
   ];
 
   return (
