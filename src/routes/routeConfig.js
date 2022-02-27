@@ -32,30 +32,32 @@ function RouteConfig() {
   }, [isAuth]);
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/" element={<Catalogue />} />
-        <Route path="/product/:id" element={<Product />} />
-        {!isLoading && isAuth ? (
-          <>
-            <Route path="/test" element={<Test />} />
-            <Route path="/user/profile" element={<Profile />} />
-            <Route path="/user/address" element={<Address />} />
-            <Route path="/user/order" element={<OrderStatusSummary />} />
-            <Route path="/user/order/:id" element={<OrderStatusDetail />} />
-            <Route path="/checkout" element={<Checkout />} />
-          </>
-        ) : (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </>
-        )}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/" element={<Catalogue />} />
+          <Route path="/product/:id" element={<Product />} />
+          {!isLoading && isAuth ? (
+            <>
+              <Route path="/test" element={<Test />} />
+              <Route path="/user/profile" element={<Profile />} />
+              <Route path="/user/address" element={<Address />} />
+              <Route path="/user/order" element={<OrderStatusSummary />} />
+              <Route path="/user/order/:id" element={<OrderStatusDetail />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </>
+          ) : (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          )}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 }
 

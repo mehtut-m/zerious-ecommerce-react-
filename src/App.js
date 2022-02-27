@@ -1,14 +1,15 @@
 import Header from './layouts/Header';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import RouteConfig from './routes/routeConfig';
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MainLayout from './layouts/MainLayout';
-
+import { useLocation } from 'react-router-dom';
 import Footer from './layouts/Footer';
-import InitialTransition from './components/InitialTransition';
 
 function App() {
+  const [isFirstMount, setIsFirstMount] = useState(true);
+
   useEffect(() => {
     document.title = 'Zerious : Be Zerious on hobbies.';
   }, []);
@@ -16,7 +17,6 @@ function App() {
   return (
     <>
       <div className="App relative">
-        <InitialTransition />
         <Header />
         <MainLayout>
           <RouteConfig />
