@@ -106,6 +106,7 @@ const AuthContextProvider = ({ children }) => {
         }, 3000);
       }
     } catch (error) {
+      toast.error(error.response.data.message, { autoClose: 1500 });
       console.log(error);
     }
   };
