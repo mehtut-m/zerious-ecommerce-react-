@@ -8,7 +8,7 @@ import 'rc-slider/assets/index.css';
 
 const initialFilter = {
   brand: [],
-  price: { min: 0, max: '' },
+  sort: null,
 };
 
 const Catalogue = () => {
@@ -27,11 +27,11 @@ const Catalogue = () => {
         array.findIndex((ele, index) => ele.id === item.id) === index
     );
 
-  // const filteredProduct = products.filter((item) => {
-  //   return (
-  //     filterByBrand.length === 0 || filterByBrand.includes(String(item.brandId))
-  //   );
-  // });
+  const filteredProduct = products.filter((item) => {
+    return (
+      filter.brand.length === 0 || filter.brand.includes(String(item.brandId))
+    );
+  });
 
   // Fetch product on load
   useEffect(() => {
@@ -81,28 +81,19 @@ const Catalogue = () => {
             </div>
 
             <div className="py-2">
-              <h3 className="font-semibold pb-1 mb-3 border-b">Price Range</h3>
-              {/* <label>From :</label>
-              <input
-                type="number"
-                min="0"
-                onChange={(e) =>
-                  setFilter({ ...filter, min: Number(e.target.value) })
-                }
-              />
-              <label>To :</label>
-              <input
-                type="number"
-                min={filter.min}
-                onChange={(e) =>
-                  setFilter({ ...filter, max: Number(e.target.value) })
-                }
-              /> */}
+              <h3 className="font-semibold pb-1 mb-3 border-b">
+                Sort Products
+              </h3>
+              <select name="cars" id="cars">
+                <option value="newest">Newest</option>
+                <option value="saab">Price (High to Low)</option>
+                <option value="opel">Price (Low to High)</option>
+              </select>
             </div>
           </div>
         </aside>
         <div className="p-2" style={{ gridArea: 'main' }}>
-          <ProductList products={products} />
+          <ProductList products={filteredProduct} />
         </div>
       </div>
     </div>

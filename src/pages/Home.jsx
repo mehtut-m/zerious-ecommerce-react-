@@ -16,10 +16,10 @@ function Home() {
       <InitialTransition />
       <motion.div exit={{ opacity: 0 }}>
         <main className="w-full py-16">
+          <HobbyWrapper />
           {/* <div> */}
           <Hero />
           {/* </div> */}
-          <HobbyWrapper />
           {/* Top trending */}
           <TrendingList />
           <NewItemList />

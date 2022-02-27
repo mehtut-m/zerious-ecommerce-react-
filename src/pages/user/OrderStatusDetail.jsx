@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { getOrderById } from '../../api/order';
 import OrderSummaryList from '../../components/CheckOut/OrderSummaryList';
 import TrackingContainer from '../../components/order/OrderStatusItem/OrderTracking/TrackingContainer';
@@ -23,7 +24,7 @@ const OrderStatusDetail = () => {
   }, [id]);
 
   return (
-    <main className="container">
+    <motion.main exit={{ opacity: 0 }} className="container">
       {/* Order Header */}
       <div className="rounded-lg overflow-hidden border">
         <div className="flex justify-between  p-6 bg-black text-white overflow-hidden">
@@ -76,7 +77,7 @@ const OrderStatusDetail = () => {
           </div>
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 };
 

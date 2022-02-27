@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import SectionHeader from '../../components/User/SectionHeader';
-
 import defaultProfile from '../../assets/images/default-profile.png';
 import { AuthContext } from '../../contexts/AuthContext';
 import Container from '../../layouts/Container';

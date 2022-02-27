@@ -21,7 +21,6 @@ import InitialTransition from '../components/InitialTransition';
 
 function RouteConfig() {
   const location = useLocation();
-
   const [isLoading, setIsLoading] = useState(true);
   const {
     user: { isAuth },
