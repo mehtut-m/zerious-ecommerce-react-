@@ -1,12 +1,21 @@
 import axios from '../config/axios';
 
-const getAllProduct = async () => {
+const getAllProduct = async (category) => {
   try {
     const products = await axios.get('/product');
     return products;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
+const getProductByHobby = async (hobbyId) => {
+  try {
+    return await axios.get(`/product/hobby/${hobbyId}`);
+  } catch (err) {
+    console.log(err);
+  }
+};
 const getProductById = async (productId) => {
   try {
     return await axios.get(`/product/${productId}`);
@@ -23,4 +32,4 @@ const getTrendingProduct = async () => {
   }
 };
 
-export { getAllProduct, getProductById, getTrendingProduct };
+export { getAllProduct, getProductById, getProductByHobby, getTrendingProduct };

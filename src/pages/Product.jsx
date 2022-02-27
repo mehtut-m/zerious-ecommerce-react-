@@ -75,7 +75,7 @@ const Product = () => {
     <motion.main exit={{ opacity: 0 }} className="container mx-auto">
       <BreadCrumb>
         <li className="breadcrumb-item text-gray-400 after:content-['>'] after:ml-1 mr-1">
-          <Link to={`/product/category/${product?.category.hobby.id}`}>
+          <Link to={`/hobby/${product?.category.hobby.id}`}>
             {product?.category.hobby.name}
           </Link>
         </li>

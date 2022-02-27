@@ -43,21 +43,6 @@ const text = {
 
 const InitialTransition = () => {
   return (
-    //   <div className="absolute inset-0 flex items-center justify-center load-screen">
-    //     <motion.div
-    //       className="relative w-full bg-black z-[1000] load-screen"
-    //       initial="initial"
-    //       animate="animate"
-    //       variants={blackBox}
-    //       onAnimationStart={() => document.body.classList.add('overflow-hidden')}
-    //       onAnimationComplete={() => {
-    //         document.body.classList.remove('overflow-hidden');
-    //         document.querySelector('.load-screen').classList.add('h-0');
-    //       }}
-    //     />
-    //   </div>
-
-    // );
     <motion.div
       className="fixed z-[1000] flex items-center justify-center w-full bg-black"
       initial="initial"

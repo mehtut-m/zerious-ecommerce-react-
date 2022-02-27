@@ -14,18 +14,15 @@ function Home() {
   return (
     <>
       <InitialTransition />
-      <motion.div exit={{ opacity: 0 }}>
-        <main className="w-full py-16">
+      <main className="w-full py-16">
+        <motion.div exit={{ opacity: 0 }}>
           <HobbyWrapper />
-          {/* <div> */}
           <Hero />
-          {/* </div> */}
           {/* Top trending */}
           <TrendingList />
           <NewItemList />
-          {/* <ProductList /> */}
-        </main>
-      </motion.div>
+        </motion.div>
+      </main>
     </>
   );
 }

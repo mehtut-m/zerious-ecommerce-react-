@@ -4,7 +4,6 @@ import { formatThaiCurrency } from '../../services/currencyService';
 
 const ProductItem = ({ product }) => {
   const { id, name, price, productImg } = product;
-  console.log(product);
   return (
     <div className="card rounded-md border p-4 h-[21.375rem] bg-white w-[200px] xl:w-[250px] block hover:border-primary shadow hover:scale-110 transition-transform">
       <Link to={`/product/${id}`}>

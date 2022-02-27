@@ -13,11 +13,10 @@ import Checkout from '../pages/Checkout';
 import OrderStatusSummary from '../pages/user/OrderStatusSummary';
 import Profile from '../pages/user/Profile';
 import Address from '../pages/user/Address';
-import Catalogue from '../pages/Catalogue';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { motion } from 'framer-motion';
-import InitialTransition from '../components/InitialTransition';
+import ProductByHobby from '../pages/product/ProductByHobby';
+import AllProduct from '../pages/product/AllProduct';
 
 function RouteConfig() {
   const location = useLocation();
@@ -35,7 +34,8 @@ function RouteConfig() {
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
-          <Route path="/product/" element={<Catalogue />} />
+          <Route path="/product/" element={<AllProduct />} />
+          <Route path="/hobby/:hobbyId" element={<ProductByHobby />} />
           <Route path="/product/:id" element={<Product />} />
           {!isLoading && isAuth ? (
             <>

@@ -2,22 +2,17 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import FilterItem from '../components/Catalogue/FilterItem';
 import ProductList from '../components/Products/ProductList';
-import { getAllProduct } from '../api/product';
-import Slider, { Range } from 'rc-slider';
+import { motion } from 'framer-motion';
 import 'rc-slider/assets/index.css';
 
 const initialFilter = {
   brand: [],
-  sort: null,
+  sort: 'newest',
 };
 
-const Catalogue = () => {
-  const [products, setProducts] = useState([]);
-
+const Catalogue = ({ products }) => {
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filter, setFilter] = useState(initialFilter);
-
-  const [filterByBrand, setFilterByBrand] = useState([]);
-
   const brand = products
     .map((item, index, array) => {
       return item.brand;
@@ -27,35 +22,62 @@ const Catalogue = () => {
         array.findIndex((ele, index) => ele.id === item.id) === index
     );
 
-  const filteredProduct = products.filter((item) => {
-    return (
-      filter.brand.length === 0 || filter.brand.includes(String(item.brandId))
-    );
-  });
-
-  // Fetch product on load
+  // Sorting
   useEffect(() => {
-    getAllProduct()
-      .then((res) => {
-        setProducts([...res.data.products]);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    const filterByBrand = products.filter(
+      (item) =>
+        filter.brand.length === 0 || filter.brand.includes(String(item.brandId))
+    );
+    let filtered = [...filterByBrand];
+
+    switch (filter.sort) {
+      case 'newest': {
+        filtered = filterByBrand.sort((a, b) => {
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        });
+        break;
+      }
+      case 'desc': {
+        filtered = filterByBrand.sort((a, b) => {
+          return Number(b.price) - Number(a.price);
+        });
+        break;
+      }
+      case 'asc': {
+        filtered = filterByBrand.sort((a, b) => {
+          return Number(a.price) - Number(b.price);
+        });
+        break;
+      }
+      default:
+      // code block
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, filter]);
 
   return (
-    <div className="container flex justify-center items-center">
+    <motion.div
+      exit={{ opacity: 0 }}
+      className="container flex justify-center items-center"
+    >
       <div
         className="grid rounded header w-full p-3"
         style={{
-          gridTemplateAreas: `
-                    'sidebar main main main'
-                    'sidebar main main main'
-                    'sidebar main main main'
-                `,
+          // gridTemplateAreas: `
+          //           'sidebar main main main'
+          //           'sidebar main main main'
+          //           'sidebar main main main'
+          //       `,
+          gridTemplateColumns: 'minmax( 320px ,1fr) 4fr',
         }}
       >
         <aside
-          style={{ gridArea: 'sidebar' }}
+          style={
+            {
+              //  gridArea: 'sidebar'
+            }
+          }
           className="bg-slate-50 p-3 rounded-md max-w-xs"
         >
           {/* Filter Heading */}
@@ -73,7 +95,6 @@ const Catalogue = () => {
                     label={el.name}
                     value={el.id}
                     filter={filter}
-                    setFilterByBrand={setFilterByBrand}
                     setFilter={setFilter}
                   />
                 ))}
@@ -84,19 +105,28 @@ const Catalogue = () => {
               <h3 className="font-semibold pb-1 mb-3 border-b">
                 Sort Products
               </h3>
-              <select name="cars" id="cars">
+              <select
+                onChange={(e) => setFilter({ ...filter, sort: e.target.value })}
+              >
                 <option value="newest">Newest</option>
-                <option value="saab">Price (High to Low)</option>
-                <option value="opel">Price (Low to High)</option>
+                <option value="desc">Price (High to Low)</option>
+                <option value="asc">Price (Low to High)</option>
               </select>
             </div>
           </div>
         </aside>
-        <div className="p-2" style={{ gridArea: 'main' }}>
-          <ProductList products={filteredProduct} />
+        <div
+          className="px-2"
+          style={
+            {
+              // gridArea: 'main'
+            }
+          }
+        >
+          <ProductList products={filteredProducts} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
