@@ -18,6 +18,7 @@ import { AnimatePresence } from 'framer-motion';
 import ProductByHobby from '../pages/product/ProductByHobby';
 import ProductByCategory from '../pages/product/ProductByCategory';
 import AllProduct from '../pages/product/AllProduct';
+import UpdateTracking from '../pages/admin/UpdateTracking';
 
 function RouteConfig() {
   const location = useLocation();
@@ -39,6 +40,7 @@ function RouteConfig() {
           <Route path="/hobby/:hobbyId" element={<ProductByHobby />} />
           <Route path="/category/:categoryId" element={<ProductByCategory />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/admin/tracking" element={<UpdateTracking />} />
           {!isLoading && isAuth ? (
             <>
               <Route path="/test" element={<Test />} />

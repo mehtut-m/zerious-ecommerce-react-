@@ -33,7 +33,7 @@ const OrderStatusDetail = () => {
           <p className="font-semibold">Order No. {id}</p>
         </div>
 
-        <ProgressBar />
+        <ProgressBar status={order?.status} />
 
         {/* Order Status Info */}
         <div className="status-info flex flex-col md:flex-row bg-secondary">

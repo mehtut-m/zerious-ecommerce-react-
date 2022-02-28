@@ -34,10 +34,10 @@ const CartContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (cart) {
       loadCartInfo();
     }
-  }, [user]);
+  }, [cart]);
 
   const updateCartItem = async (productId, amount) => {
     if (amount === 0) {

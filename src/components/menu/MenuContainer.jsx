@@ -20,10 +20,6 @@ const MenuContainer = ({ isAuth, logOut, handleCloseDrawer }) => {
             <img src={address} alt="address" />
             Address
           </MenuItems>
-          <MenuItems handleCloseDrawer={handleCloseDrawer}>
-            <img src={heart} alt="favorite-items" />
-            Favorite Items
-          </MenuItems>
           <MenuItems path="/user/order" handleCloseDrawer={handleCloseDrawer}>
             <img src={order} alt="Previous Order" /> Previous Orders
           </MenuItems>

@@ -81,12 +81,10 @@ const TrackingContainer = ({ trackingNo }) => {
     <>
       <div className="tracking-progression w-full p-4 flex flex-col items-center">
         <h6 className="font-semibold mb-4">Shipping Status</h6>
-        {!loading ? (
+        {!trackingNo ? (
+          'Shipping status will be available when products are shipped.'
+        ) : !loading ? (
           <div className="w-full p-3">
-            {/* {trackingNo &&
-              [...post.response.items[trackingNo]]
-                .reverse()
-                .map((item) => <TrackingItem key={item.status} item={item} />)} */}
             {trackingStatus &&
               trackingStatus[trackingNo] &&
               trackingStatus[trackingNo]
