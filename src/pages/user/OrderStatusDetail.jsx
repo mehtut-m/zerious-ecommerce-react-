@@ -11,7 +11,6 @@ const OrderStatusDetail = () => {
   const { id } = useParams();
   const [order, setOrder] = useState({});
   const [subTotal, setSubTotal] = useState(0);
-
   const { orderItem = [] } = order;
 
   useEffect(() => {

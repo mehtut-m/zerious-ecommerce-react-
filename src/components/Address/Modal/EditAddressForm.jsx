@@ -11,7 +11,6 @@ const EditAddressForm = ({
 }) => {
   const { name, telephoneNo, address } = addressForm;
   const { createNewAddress, user } = useContext(AuthContext);
-  console.log(user);
   const handleFormChange = (e) => {
     handleInputChange(e);
   };
@@ -35,8 +34,8 @@ const EditAddressForm = ({
   };
 
   return (
-    <div className="bg-white rounded-lg md:max-w-md md:mx-auto p-4 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative">
-      <form>
+    <div className="bg-white rounded-lg md:max-w-lg md:w-full md:mx-auto p-4 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative">
+      <form className="flex flex-col gap-3 ">
         <FormInput
           title="name"
           type="text"
@@ -61,7 +60,7 @@ const EditAddressForm = ({
 
       <div className="text-center md:text-right mt-4 md:flex md:justify-end">
         <button
-          className="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-red-200 text-red-700 rounded-lg font-semibold text-sm md:ml-2 md:order-2"
+          className="block w-full md:inline-block md:w-auto px-4 py-3 md:py-2 bg-primary text-white rounded-lg font-semibold text-sm md:ml-2 md:order-2"
           onClick={
             action === 'CREATE'
               ? handleCreateAddress

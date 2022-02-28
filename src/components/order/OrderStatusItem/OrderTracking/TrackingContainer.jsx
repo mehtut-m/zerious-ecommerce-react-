@@ -56,15 +56,17 @@ const post = {
   status: true,
 };
 
-const TrackingContainer = () => {
-  const trackingNo = 'RH156090565TH';
+const TrackingContainer = ({ trackingNo }) => {
+  trackingNo = 'RH156090565TH';
+
   return (
     <div className="tracking-progression w-full p-4 flex flex-col items-center">
-      <h6 className="font-semibold mb-4">Progression</h6>
+      <h6 className="font-semibold mb-4">Shipping Status</h6>
       <div className="w-full p-3">
-        {[...post.response.items[trackingNo]].reverse().map((item) => (
-          <TrackingItem key={item.status} item={item} />
-        ))}
+        {trackingNo &&
+          [...post.response.items[trackingNo]]
+            .reverse()
+            .map((item) => <TrackingItem key={item.status} item={item} />)}
       </div>
     </div>
   );

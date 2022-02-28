@@ -15,18 +15,17 @@ import { AuthContext } from '../contexts/AuthContext';
 const Product = () => {
   const { cart, updateCartItem } = useContext(CartContext);
   const {
-    user: { user, isAuth },
+    user: { isAuth },
   } = useContext(AuthContext);
 
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
   const navigate = useNavigate();
-
+  console.log(product);
   useEffect(() => {
     getProductById(id)
       .then((res) => {
-        console.log(res.data.product);
         setProduct(res.data.product);
       })
       .catch((err) => console.log(err));
@@ -72,7 +71,10 @@ const Product = () => {
   };
 
   return (
-    <motion.main exit={{ opacity: 0 }} className="container mx-auto">
+    <motion.main
+      exit={{ opacity: 0 }}
+      className="container mx-auto line-clamp-1"
+    >
       <BreadCrumb>
         <li className="breadcrumb-item text-gray-400 after:content-['>'] after:ml-1 mr-1">
           <Link to={`/hobby/${product?.category.hobby.id}`}>
@@ -80,9 +82,11 @@ const Product = () => {
           </Link>
         </li>
         <li className="breadcrumb-item text-gray-400  after:content-['>'] after:ml-1 mr-1">
-          <Link to={`/product/${id}`}>{product?.category.name}</Link>
+          <Link to={`/category/${product?.categoryId}`}>
+            {product?.category.name}
+          </Link>
         </li>
-        <li className="breadcrumb-item text-black">
+        <li className="breadcrumb-item text-black line-clamp-1">
           <Link to={`/product/${id}`}>{product?.name}</Link>
         </li>
       </BreadCrumb>
