@@ -1,4 +1,5 @@
 import defaultImg from '../assets/images/default-product-img.png';
+import ImageGallery from 'react-image-gallery';
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
@@ -11,6 +12,7 @@ import BreadCrumb from '../components/BreadCrumb';
 import Button from '../components/Button';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthContext';
+import ProductImageGallery from '../components/Products/ProductImageGallery';
 
 const Product = () => {
   const { cart, updateCartItem } = useContext(CartContext);
@@ -22,7 +24,7 @@ const Product = () => {
   const [product, setProduct] = useState(null);
   const [itemCount, setItemCount] = useState(1);
   const navigate = useNavigate();
-  console.log(product);
+
   useEffect(() => {
     getProductById(id)
       .then((res) => {
@@ -69,7 +71,7 @@ const Product = () => {
       console.log(err);
     }
   };
-
+  console.log(product);
   return (
     <motion.main
       exit={{ opacity: 0 }}
@@ -94,15 +96,21 @@ const Product = () => {
       <div className="product-info flex flex-wrap justify-around w-full container">
         {/* Product container */}
         <div className="product-img-container w-full md:max-w-md">
-          <img
-            className="product-img mb-10 w-full"
-            src={
-              product?.productImg.length > 0
-                ? product.productImg[0].productImg
-                : defaultImg
-            }
-            alt={product?.name}
-          />
+          {product?.productImg?.length === 0 && (
+            <img
+              className="product-img mb-10 w-full"
+              src={
+                product?.productImg.length > 0
+                  ? product.productImg[0].productImg
+                  : defaultImg
+              }
+              alt={product?.name}
+            />
+          )}
+
+          {product?.productImg.length > 0 && (
+            <ProductImageGallery productImg={product?.productImg} />
+          )}
         </div>
         {/* Product Info */}
         <div className="product-content-container flex flex-col gap-4 max-w-lg w-[512px]">
