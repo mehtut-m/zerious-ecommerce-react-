@@ -18,7 +18,7 @@ const EditAddressForm = ({
   const handleCreateAddress = async () => {
     try {
       const res = await createNewAddress(name, telephoneNo, address);
-      console.log(res);
+      closeModal();
     } catch (err) {
       console.log(err);
     }
