@@ -8,5 +8,9 @@ const getOrderById = async (id) => {
   const order = axios.get(`/order/${id}`);
   return order;
 };
+const getTrackingStatus = async (trackingId) => {
+  const order = axios.get(`/order/tracking/${trackingId}`);
+  return order;
+};
 
-export { getAllOrder, getOrderById };
+export { getAllOrder, getOrderById, getTrackingStatus };

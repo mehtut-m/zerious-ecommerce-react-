@@ -68,7 +68,7 @@ const InitialTransition = () => {
           />
         </pattern>
         <text
-          className="text-4xl font-bold logo font-['Quicksand'] text-white"
+          className="text-4xl font-bold logo font-['Quicksand']"
           textAnchor="middle"
           x="50%"
           y="50%"

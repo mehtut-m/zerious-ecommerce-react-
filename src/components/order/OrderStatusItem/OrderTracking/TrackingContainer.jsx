@@ -1,5 +1,9 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { getTrackingStatus } from '../../../../api/order';
+import axios from '../../../../config/axios';
+import LoadingScreen from './LoadingScreen';
 import TrackingItem from './TrackingItem';
+
 const post = {
   response: {
     items: {
@@ -57,18 +61,43 @@ const post = {
 };
 
 const TrackingContainer = ({ trackingNo }) => {
-  trackingNo = 'RH156090565TH';
+  const [trackingStatus, setTrackingStatus] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // trackingNo = 'RH156090565TH';
+
+  console.log(loading);
+  useEffect(() => {
+    const res = getTrackingStatus(trackingNo)
+      .then((res) => {
+        setTrackingStatus(res.data);
+        console.log(res);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [trackingNo]);
 
   return (
-    <div className="tracking-progression w-full p-4 flex flex-col items-center">
-      <h6 className="font-semibold mb-4">Shipping Status</h6>
-      <div className="w-full p-3">
-        {trackingNo &&
-          [...post.response.items[trackingNo]]
-            .reverse()
-            .map((item) => <TrackingItem key={item.status} item={item} />)}
+    <>
+      <div className="tracking-progression w-full p-4 flex flex-col items-center">
+        <h6 className="font-semibold mb-4">Shipping Status</h6>
+        {!loading ? (
+          <div className="w-full p-3">
+            {/* {trackingNo &&
+              [...post.response.items[trackingNo]]
+                .reverse()
+                .map((item) => <TrackingItem key={item.status} item={item} />)} */}
+            {trackingStatus &&
+              trackingStatus[trackingNo] &&
+              trackingStatus[trackingNo]
+                .reverse()
+                .map((item, index) => <TrackingItem key={index} item={item} />)}
+          </div>
+        ) : (
+          <LoadingScreen />
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

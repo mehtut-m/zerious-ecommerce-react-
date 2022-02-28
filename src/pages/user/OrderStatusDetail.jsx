@@ -43,7 +43,7 @@ const OrderStatusDetail = () => {
           </div>
 
           {/* Progression Details */}
-          <TrackingContainer />
+          <TrackingContainer trackingNo={order?.tracking} />
         </div>
 
         {/* Product Details */}
