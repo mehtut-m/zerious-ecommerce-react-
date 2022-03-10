@@ -66,15 +66,16 @@ const TrackingContainer = ({ trackingNo }) => {
 
   // trackingNo = 'RH156090565TH';
 
-  console.log(loading);
+  console.log(trackingStatus);
   useEffect(() => {
-    const res = getTrackingStatus(trackingNo)
-      .then((res) => {
-        setTrackingStatus(res.data);
-        console.log(res);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+    if (trackingNo) {
+      getTrackingStatus(trackingNo)
+        .then((res) => {
+          setTrackingStatus(res.data);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [trackingNo]);
 
   return (
