@@ -37,7 +37,7 @@ const CartContextProvider = ({ children }) => {
     if (cart) {
       loadCartInfo();
     }
-  }, [cart]);
+  }, []);
 
   const updateCartItem = async (productId, amount) => {
     if (amount === 0) {

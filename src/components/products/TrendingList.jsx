@@ -29,10 +29,19 @@ function TrendingList() {
             initialSlide: 0,
             responsive: [
               {
-                breakpoint: 1024,
+                breakpoint: 1400,
                 settings: {
                   slidesToShow: 3,
                   slidesToScroll: 3,
+                  infinite: true,
+                  dots: true,
+                },
+              },
+              {
+                breakpoint: 815,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
                   infinite: true,
                   dots: true,
                 },
@@ -42,7 +51,7 @@ function TrendingList() {
                 settings: {
                   slidesToShow: 2,
                   slidesToScroll: 2,
-                  initialSlide: 2,
+                  initialSlide: 0,
                 },
               },
               {
@@ -50,6 +59,7 @@ function TrendingList() {
                 settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1,
+                  initialSlide: 0,
                 },
               },
             ],

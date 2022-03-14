@@ -14,7 +14,7 @@ function Home() {
   return (
     <>
       <InitialTransition />
-      <main className="w-full py-16">
+      <main className="w-full pb-16">
         <motion.div exit={{ opacity: 0 }}>
           <HobbyWrapper />
           <Hero />

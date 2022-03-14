@@ -3,7 +3,7 @@ import Stepper from 'react-stepper-horizontal';
 const progress = [
   { status: 'Order Placed', title: 'Order Placed' },
   { status: 'Paid', title: 'Payment Received' },
-  { status: 'Shipping', title: 'Shipment in progress' },
+  { status: 'Shipped', title: 'Shipment in progress' },
   { status: 'Completed', title: 'Completed' },
 ];
 const ProgressBar = ({ status }) => {
